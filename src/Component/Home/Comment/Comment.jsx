@@ -1,12 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import "./Comment.css";
 import { FaCommentAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../../AuthProvide/AuthProvider";
 
 const Comment = () => {
   const [rating, setRating] = useState(0);
   const [check, setCheck] = useState(false);
+  const { user } = useContext(AuthContext);
   const ratingChanged = (newRating) => {
     setRating(newRating);
   };
@@ -88,12 +90,14 @@ const Comment = () => {
               style={{ borderRadius: "5px" }}
               className="w-full md:w-3/4"
               type="text"
+              value={user?.displayName}
               name="name"
               placeholder="Your Name"
               required
             />
             <input
               style={{ borderRadius: "5px" }}
+              value={user?.email}
               className="w-full md:w-3/4"
               name="email"
               type="Email"
