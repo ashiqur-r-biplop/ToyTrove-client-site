@@ -3,6 +3,7 @@ import Header from "../Header/Header";
 import Gallery from "../Gallery/Gallery";
 import Category from "../Category/Category";
 import Popular from "../Popular/Popular";
+import Comment from "../Comment/Comment";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <Gallery></Gallery>
       <Category></Category>
       <Popular></Popular>
+      <Comment></Comment>
     </div>
   );
 };

@@ -16,21 +16,21 @@ const Popular = () => {
         Store
       </h1>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 my-10">
-        <div className="text-center m-3" data-aos="zoom-in">
+        <div className="text-center m-3" data-aos="fade-down">
           <div className="lg:w-56 bg-slate-200 p-5 mx-auto rounded-lg">
             <img className="w-full " src={popularImage1} alt="" />
           </div>
           <h1 className="font-semibold md:text-2xl">Benny</h1>
           <p className="text-gray-400">price: $120</p>
         </div>
-        <div className="text-center m-3" data-aos="zoom-out">
+        <div className="text-center m-3" data-aos="fade-down">
           <div className="lg:w-56 bg-slate-200 p-5 mx-auto rounded-lg">
             <img className="w-full " src={popularImage2} alt="" />
           </div>
           <h1 className="font-semibold md:text-2xl ">Milo</h1>
           <p className="text-gray-400">price: $220</p>
         </div>
-        <div className="text-center m-3" data-aos="zoom-in">
+        <div className="text-center m-3" data-aos="fade-down">
           <div className="lg:w-56 bg-slate-200 p-5 mx-auto rounded-lg">
             <img className="w-full " src={popularImage3} alt="" />
           </div>

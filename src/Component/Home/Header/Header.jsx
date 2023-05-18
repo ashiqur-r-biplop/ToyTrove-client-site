@@ -22,7 +22,7 @@ const Header = () => {
         backgroundBlendMode: "multiply",
       }}
     >
-      <div className="container mx-auto flex flex-col justify-center h-full space-y-5 ">
+      <div className="container md:mx-auto px-2 flex flex-col justify-center h-full space-y-5 ">
         <h1 className="text-white lg:w-2/4">
           <span className="text-[#32c770] font-semibold md:text-4xl">
             Bringing Joy to Every Child
@@ -32,9 +32,9 @@ const Header = () => {
             Explore Our Toy Wonderland
           </span>
         </h1>
-        <p className="md:w-2/4 text-white  leading-9  md:text-xl">
+        <p className="md:w-2/4 text-white  leading-10  md:text-xl">
           Welcome to our enchanting world of play and imagination!{" "}
-          <span className="text-[#32c770] font-bold ">At ToyTrove</span>, we
+          <span className="text-[#32c770] ">At ToyTrove</span>, we
           believe that childhood is a precious time filled with wonder and
           discovery. Our carefully curated collection of extraordinary toys is
           designed to spark joy, ignite imagination, and create unforgettable

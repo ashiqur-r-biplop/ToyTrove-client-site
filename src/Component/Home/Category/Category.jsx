@@ -7,28 +7,22 @@ import "react-tabs/style/react-tabs.css";
 import "aos/dist/aos.css";
 
 const Category = () => {
-  const [tabTitle, setTabTitle] = useState("Teddy");
+  const [tabCategory, setTabCategory] = useState("Teddy");
   const [tabsData, setTabsData] = useState([]);
 
   const handleTabs = (title) => {
-    setTabTitle(title);
+    setTabCategory(title);
   };
   useEffect(() => {
-    fetch("fakeData.json")
+    fetch(`http://localhost:5000/toys?category=${tabCategory}`)
       .then((res) => res.json())
-      .then((data) => {
-        // data base thekey data filter hoa ashbey
-        const filterData = data.filter(
-          (tabData) => tabData?.title === tabTitle
-        );
-        setTabsData(filterData);
-      });
+      .then((data) => setTabsData(data))
     Aos.init();
-  }, [tabTitle]);
+  }, [tabCategory]);
 
   const tabPanel = ["data1", "data2", "data3"];
   return (
-    <div className="container mx-auto my-20" data-aos="zoom-out">
+    <div className="container mx-auto my-20" data-aos="fade-down">
       <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
         Our <span className="text-[#32c770] border-[#32c770]">Category</span>
       </h1>
@@ -41,24 +35,31 @@ const Category = () => {
           </TabList>
           {tabPanel?.map((tab, i) => (
             <TabPanel key={i}>
-              <div
-                className="grid md:grid-cols-2 grid-cols-1"
-                
-              >
-                {tabsData?.map((data , i) => (
-                  <div className="card md:w-96 bg-base-100 shadow-xl my-3 mx-auto lg:mt-14" key={i} data-aos="zoom-in">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3  grid-cols-1">
+                {tabsData?.map((data, i) => (
+                  <div
+                    className="card md:w-96 bg-base-100 shadow-xl my-3 mx-3 md:mx-auto lg:mt-14"
+                    key={i}
+                    data-aos="fade-down"
+                  >
                     <figure>
                       <img src={data?.picture} alt="Shoes" />
                     </figure>
                     <div className="card-body relative">
-                      <h2 className="card-title absolute -top-10 bg-white px-3 py-2 shadow ">Name: {data?.name}</h2>
+                      <h2 className="card-title absolute -top-10 bg-white px-3 py-2 shadow ">
+                        Name: {data?.toyName}
+                      </h2>
                       <p className="text-start">Price : ${data?.price}</p>
                       <div className="flex items-center">
                         <span className="mb-3">Ratings: </span>
+                       
                         <Rating
                           className="ms-2"
                           initialRating={data?.rating}
-                          placeholderRating={<FaStar></FaStar>}
+                          size={24}
+                          emptyIcon={<i className="far fa-star"></i>}
+                          halfIcon={<i className="fa fa-star-half-alt"></i>}
+                          fullIcon={<i className="fa fa-star"></i>}
                           readonly
                         />
                       </div>

@@ -1,44 +1,83 @@
 [
-    {
-      "title": "Teddy",
-      "picture": "https://i.ibb.co/qsGv2TT/img-2.jpg",
-      "name": "Snuggles",
-      "price": "19.99",
-      "rating": 4.5
-    },
-    {
-      "title": "Teddy",
-      "picture": "https://i.ibb.co/LkTv9d2/img-5.jpg",
-      "name": "Cuddles",
-      "price": "29.99",
-      "rating": 3.8
-    },
-    {
-      "title": "Horse",
-      "picture": "https://i.ibb.co/1ms5cp2/img-1.jpg",
-      "name": "Thunder",
-      "price": "14.99",
-      "rating": 4.2
-    },
-    {
-      "title": "Horse",
-      "picture": "https://i.ibb.co/B6WqWqT/img-3.jpg",
-      "name": "Starlight",
-      "price": "24.99",
-      "rating": 4.7
-    },
-    {
-      "title": "Dogs",
-      "picture": "https://i.ibb.co/wrbtNg0/img-4.jpg",
-      "name": "Max",
-      "price": "9.99",
-      "rating": 3.5
-    },
-    {
-      "title": "Dogs",
-      "picture": "https://i.ibb.co/2P4rXpp/img-6.jpg",
-      "name": "Bella",
-      "price": "39.99",
-      "rating": 4.9
-    }
-  ]
+  {
+    "Seller": "Biplop",
+    "category": "Teddy",
+    "picture": "https://i.ibb.co/qsGv2TT/img-2.jpg",
+    "name": "Snuggles",
+    "price": "19.99",
+    "quantity": "20",
+    "rating": 4.5
+  },
+  {
+    "Seller": "Shohan",
+    "category": "Teddy",
+    "picture": "https://i.ibb.co/LkTv9d2/img-5.jpg",
+    "name": "Cuddles",
+    "price": "29.99",
+    "quantity": "20",
+    "rating": 3.8
+  },
+  {
+    "Seller": "Emon",
+    "category": "Horse",    
+    "picture": "https://i.ibb.co/1ms5cp2/img-1.jpg",
+    "name": "Thunder",
+    "price": "14.99",
+    "quantity": "20",         
+    "rating": 4.2
+  },
+  {
+    "Seller": "Laden",
+    "category": "Horse",
+    "picture": "https://i.ibb.co/B6WqWqT/img-3.jpg",
+    "name": "Starlight",
+    "price": "24.99",
+    "quantity": "20",
+    "rating": 4.7
+  },
+  {
+    "Seller": "Akib",
+    "category": "Dogs",
+    "picture": "https://i.ibb.co/wrbtNg0/img-4.jpg",
+    "name": "Max",
+    "price": "9.99",
+    "quantity": "20",
+    "rating": 3.5
+  },
+  {
+    "Seller": "Tanjil",
+    "category": "Dogs",
+    "picture": "https://i.ibb.co/2P4rXpp/img-6.jpg",
+    "name": "Bella",
+    "price": "39.99",
+    "quantity": "20",
+    "rating": 4.9
+  },
+  {
+    "Seller": "zidan",
+    "category": "Teddy",
+    "picture": "https://i.ibb.co/TMZxvgM/img-9.jpg",
+    "name": "Honey Bear",
+    "price": "$15.99",
+    "quantity": "20",
+    "rating": 4.1
+  },
+  {
+    "Seller": "tilok",
+    "category": "Horse",
+    "picture": "https://i.ibb.co/zSdw9J8/img-8.jpg",
+    "name": "Thunderbolt",
+    "price": "$12.99",
+    "quantity": "20",
+    "rating": 3.9
+  },
+  {
+    "Seller": "Dipu",
+    "category": "Dogs",
+    "picture": "https://i.ibb.co/0VJN1GS/img-7.jpg",
+    "name": "Chewbacca",
+    "price": "$34.99",
+    "quantity": "20",
+    "rating": 4.6
+  }
+]
