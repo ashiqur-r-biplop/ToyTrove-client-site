@@ -35,14 +35,14 @@ const Comment = () => {
     })
       .then((res) => res.json())
       .then((result) => {
-        if(result?.insertedId){
-            Swal.fire({
-                position: 'top-center',
-                icon: 'success',
-                title: 'Comment Successful',
-                showConfirmButton: false,
-                timer: 1500
-              })
+        if (result?.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Comment Successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
         }
       });
   };
@@ -110,12 +110,13 @@ const Comment = () => {
               I comment.
             </p>
           </div>
-          <input
-            type="submit"
-            value="Comment"
+          <button
             style={{ cursor: "pointer" }}
-            className=" bg-[#32c770] text-[#000000] px-4 py-3 md:px-10 md:py-4 rounded-full font-semibold flex items-center uppercase"
-          />
+            type="submit"
+            className="bg-[#32c770] text-[#000000] px-4 py-3 md:px-10 md:text-center md:py-4 rounded-full font-semibold flex items-center uppercase"
+          >
+            Comment
+          </button>
         </form>
       </div>
     </div>

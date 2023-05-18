@@ -68,14 +68,14 @@ const AddToys = () => {
                         />
                       </div>
                     </div>
-                    <div className="md:w-3/4">
-                      <div className="form-control md:w-3/4 mb-5">
+                    <div className="md:w-3/4 mr-auto">
+                      <div className="form-control md:w-3/4 mb-5 ml-0">
                         <label className="label">
                           <span className="label-text">Category</span>
                         </label>
                         <select
                           name="cars"
-                          className="input input-bordered w-full"
+                          className="input input-bordered w-full ml-0"
                           id="cars"
                         >
                           <option value="TeddyBear">Teddy bear</option>
@@ -142,7 +142,7 @@ const AddToys = () => {
                   <div className="form-control mt-6 ">
                     <input
                       type="submit"
-                      className="btn btn-primary"
+                      className="btn bg-[#32c770] hover:bg-[#32c770] border-0"
                       value="Upload"
                     />
                   </div>
