@@ -1,11 +1,15 @@
-import React from "react";
+import React, { useEffect } from "react";
 import headerImg from "../../../assets/Image/header.jpg";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { FaBuysellads, FaShoppingCart, FaSubway } from "react-icons/fa";
-
+import { FaShoppingCart } from "react-icons/fa";
+import Aos from "aos";
+import 'aos/dist/aos.css'
 const Header = () => {
+
+  useEffect(() => {
+    Aos.init();
+  }, []);
   return (
-    <div
+    <div 
       style={{
         backgroundImage: `url(${headerImg})`,
         backgroundPosition: "center",
@@ -16,7 +20,7 @@ const Header = () => {
         backgroundBlendMode: "multiply",
       }}
     >
-      <div className="container mx-auto flex flex-col justify-center h-full space-y-5">
+      <div className="container mx-auto flex flex-col justify-center h-full space-y-5 " >
         <h1 className="text-white lg:w-2/4 ">
           <span className="text-[#32c770] font-semibold md:text-4xl">Bringing Joy to Every  Child</span> <br />
           <span className="md:text-8xl text-3xl font-bold mt-10 ">

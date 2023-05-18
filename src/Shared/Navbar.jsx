@@ -1,7 +1,8 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/Image/logo.png";
-
+import Aos from "aos";
+import 'aos/dist/aos.css'
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
@@ -9,8 +10,15 @@ const Navbar = () => {
     setIsOpen(!isOpen);
   };
 
+  useEffect(()=>{
+    Aos.init({
+      duration: 800,
+      easing: 'ease-in-out',
+    });
+  },[])
+
   return (
-    <nav className="bg-[#32c7706e] py-2 md:fixed top-5 mx-auto w-full">
+    <nav style={{zIndex:'9999'}} className="bg-[#32c7706e] py-2 md:fixed top-5 mx-auto w-full" data-aos="fade-down">
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="flex items-center justify-start sm:justify-between w-full">
