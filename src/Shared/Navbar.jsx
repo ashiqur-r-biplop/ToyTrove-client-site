@@ -1,24 +1,36 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import logo from "../assets/Image/logo.png";
 import Aos from "aos";
-import 'aos/dist/aos.css'
+import "aos/dist/aos.css";
+import { AuthContext } from "../AuthProvide/AuthProvider";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
+  const { user, logout } = useContext(AuthContext);
+  console.log(user);
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     Aos.init({
       duration: 800,
-      easing: 'ease-in-out',
+      easing: "ease-in-out",
     });
-  },[])
+  }, []);
+
+  const handleLogout = () => {
+    logout()
+      .then(() => {})
+      .then((err) => {});
+  };
 
   return (
-    <nav style={{zIndex:'9999'}} className="bg-[#32c770b9] py-2 md:fixed top-5 mx-auto w-full" data-aos="fade-up">
+    <nav
+      style={{ zIndex: "9999" }}
+      className="bg-[#32c770b9] py-2 md:fixed top-5 mx-auto w-full"
+      data-aos="fade-up"
+    >
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="flex items-center justify-start sm:justify-between w-full">
@@ -38,35 +50,48 @@ const Navbar = () => {
                 >
                   Home
                 </Link>
-                <Link
-                  to="/allToy"
-                  className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  All Toys
-                </Link>
-                <Link
-                  to="/myToys"
-                  className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  MyToys
-                </Link>
-                <Link
-                  to="/addToy"
-                  className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                >
-                  add a Toy
-                </Link>
+                {user && (
+                  <>
+                    <Link
+                      to="/allToy"
+                      className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      All Toys
+                    </Link>
+                    <Link
+                      to="/myToys"
+                      className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      MyToys
+                    </Link>
+                    <Link
+                      to="/addToy"
+                      className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                    >
+                      add a Toy
+                    </Link>
+                  </>
+                )}
                 <Link
                   to="/blogs"
                   className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
                 >
                   Blogs
                 </Link>
-                <Link to="/login">
-                  <button className="btn bg-[#32c770] hover:bg-[#32c770] border-none">
-                    Login
+                {user ? (
+                  <button
+                    onClick={handleLogout}
+                    className="btn bg-[#32c770] hover:bg-[#32c770] border-none"
+                  >
+                    LogOut
                   </button>
-                </Link>
+                ) : (
+                  <Link to="/login">
+                    <button className="btn bg-[#32c770] hover:bg-[#32c770] border-none">
+                      Login
+                    </button>
+                  </Link>
+                )}
               </div>
             </div>
           </div>

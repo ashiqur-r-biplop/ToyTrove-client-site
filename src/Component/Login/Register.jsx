@@ -1,13 +1,21 @@
-import React, { useState } from "react";
+import { faEye, faEyeSlash, faL } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import googleImg from "../../assets/Image/social/google.png";
 import gitHubImg from "../../assets/Image/social/github.png";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
 
+import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvide/AuthProvider";
 const Register = () => {
   const [toggleIcon, setToggleIcon] = useState(false);
   const [errorMassage, setErrorMassage] = useState("");
+  const navigate = useNavigate();
+  const { signUp, signInGoogle, signInGithub, ProfileUpdate, setReload } =
+    useContext(AuthContext);
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const handleSignUp = (e) => {
     e.preventDefault();
@@ -21,8 +29,36 @@ const Register = () => {
       return;
     } else if (!/^(?=.*[A-Za-z])/.test(password)) {
       setErrorMassage("At least one letter");
+    } else {
+      signUp(email, password)
+        .then((result) => {
+          const loggedUser = result.user;
+          setErrorMassage("");
+          ProfileUpdate(name, photoUrl).then(() => {
+            setReload(true);
+          });
+          navigate(from, { replace: true });
+          form.reset();
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your Register Successful",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        })
+        .catch((err) => {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            title: `${err.message}`,
+            footer: '<a href="">Why do I have this issue?</a>',
+          });
+          setErrorMassage(err.message);
+        });
     }
   };
+
   const handleEmail = (e) => {
     const emailHandle = e.target.value;
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailHandle)) {
@@ -43,6 +79,39 @@ const Register = () => {
     } else {
       setErrorMassage("");
     }
+  };
+  const handleGoogleLogin = () => {
+    const googleProvider = new GoogleAuthProvider();
+    signInGoogle(googleProvider)
+      .then((result) => {
+        const loggedUser = result.user;
+        // console.log(loggedUser);
+        navigate(from, { replace: true });
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Your Google Register is Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {});
+  };
+  const handleGithubLogin = () => {
+    const githubProvider = new GithubAuthProvider();
+    signInGithub(githubProvider)
+      .then((result) => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+        Swal.fire({
+          position: "top-center",
+          icon: "success",
+          title: "Your Github Register is Successful",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      })
+      .catch((err) => {});
   };
 
   return (
@@ -110,13 +179,17 @@ const Register = () => {
                 Please Login
               </Link>
             </p>
-            <input type="submit" value="Register" className="bg-[#32c770] border-0" />
+            <input
+              type="submit"
+              value="Register"
+              className="bg-[#32c770] border-0"
+            />
 
             <div className="pt-5 flex items-center justify-between w-full">
               <p>Or Sign in with:</p>
               <div className="flex items-center justify-between">
                 <img
-                //   onClick={handleGoogleLogin}
+                  onClick={handleGoogleLogin}
                   style={{
                     width: "50px",
                     marginRight: "10px",
@@ -128,7 +201,7 @@ const Register = () => {
                   alt=""
                 />
                 <img
-                //   onClick={handleGithubLogin}
+                  onClick={handleGithubLogin}
                   style={{
                     width: "50px",
                     marginRight: "10px",
