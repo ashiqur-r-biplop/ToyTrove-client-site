@@ -182,7 +182,7 @@ const Register = () => {
             <input
               type="submit"
               value="Register"
-              className="bg-[#32c770] border-0"
+              className="bg-[#32c770] border-0 text-white font-semibold"
             />
 
             <div className="pt-5 flex items-center justify-between w-full">

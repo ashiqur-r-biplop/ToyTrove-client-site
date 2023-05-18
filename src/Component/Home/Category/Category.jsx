@@ -43,7 +43,7 @@ const Category = () => {
                     data-aos="fade-down"
                   >
                     <figure>
-                      <img src={data?.picture} alt="Shoes" />
+                      <img src={data?.picture} alt="" />
                     </figure>
                     <div className="card-body relative">
                       <h2 className="card-title absolute -top-10 bg-white px-3 py-2 shadow ">

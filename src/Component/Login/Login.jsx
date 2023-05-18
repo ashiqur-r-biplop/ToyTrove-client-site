@@ -1,19 +1,108 @@
-import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext, useState } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import "./Login.css";
-
-import googleImg from '../../assets/Image/social/google.png'
-import gitHubImg from '../../assets/Image/social/github.png'
+import googleImg from "../../assets/Image/social/google.png";
+import gitHubImg from "../../assets/Image/social/github.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { GithubAuthProvider, GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth";
+import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvide/AuthProvider";
 
 const Login = () => {
+  const { login, signInGoogle, signInGithub, auth } = useContext(AuthContext);
   const [toggleIcon, setToggleIcon] = useState(false);
+  const [errorMassage, setErrorMassage] = useState("");
+  const [successMassage, setSuccessMassage] = useState("");
+  const [email, setEmail] = useState("");
+  const location = useLocation();
+  // console.log(location);
+  const navigate = useNavigate();
+  const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
     e.preventDefault();
     const form = e.target;
     const emailField = form.email.value;
+    setEmail(emailField);
+    setErrorMassage("")
+    const passwordField = form.password.value;
+    login(emailField, passwordField)
+      .then((result) => {
+        const loggedUser = result.user;
+        // console.log(loggedUser);
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Your Log In Successful',
+          showConfirmButton: false,
+          buttonsStyling:"#32c770",
+          timer: 1500
+        })
+        setSuccessMassage("login successful");
+        setErrorMassage("");
+        navigate(from, { replace: true });
+      })
+      .catch((err) => {
+        setSuccessMassage("");
+        Swal.fire({
+          icon: 'error',
+          buttonsStyling:{
+            color: "#32c770",
+            backgroundColor: "#32c770"
+          
+          },
+          title: 'Oops...',
+          title: `${err.message}`,
+          footer: '<a href="">Why do I have this issue?</a>'
+        })
+        setErrorMassage(err.message);
+      });
+  };
+
+  const handleGoogleLogin = () => {
+    const googleProvider = new GoogleAuthProvider();
+    signInGoogle(googleProvider)
+      .then((result) => {
+        const loggedUser = result.user;
+        // console.log(loggedUser);
+        navigate(from, { replace: true });
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Your Google Login Successful',
+          showConfirmButton: false,
+          timer: 1500,
+        })
+      })
+      .catch((err) => {
+        
+      });
+  };
+  const handleGithubLogin = () => {
+    const githubProvider = new GithubAuthProvider();
+    signInGithub(githubProvider)
+      .then((result) => {
+        const loggedUser = result.user;
+        navigate(from, { replace: true });
+        Swal.fire({
+          position: 'top-center',
+          icon: 'success',
+          title: 'Your Github Login Successful',
+          showConfirmButton: false,
+          timer: 1500
+        })
+      })
+      .catch((err) => {
+        // console.log(err.message);
+      });
+  };
+  const handleForgetPassword = () => {
+    sendPasswordResetEmail(auth, email)
+      .then(() => {})
+      .catch((err) => {
+        // console.log(err.message);
+      });
   };
 
   return (
@@ -60,8 +149,8 @@ const Login = () => {
             <p className="mb-3 text-end w-full forget-password">
               Forget Password
             </p>
-            {/* <span className="text-green-500 m-0">{successMassage}</span> */}
-            {/* <span className="text-red-500 m-0">{errorMassage}</span> */}
+            <span className="text-green-500 m-0">{successMassage}</span>
+            <span className="text-red-500 m-0">{errorMassage}</span>
             <p className="mb-2">
               Don't Have an Account?{" "}
               <Link
@@ -74,13 +163,13 @@ const Login = () => {
             <input
               type="submit"
               value="Login"
-              className="bg-[#32c770] border-0"
+              className="bg-[#32c770] border-0 text-white font-semibold"
             />
             <div className="pt-5 flex items-center justify-between w-full">
               <p>Or Sign in with:</p>
               <div className="flex items-center justify-between">
                 <img
-                  //   onClick={handleGoogleLogin}
+                    onClick={handleGoogleLogin}
                   style={{
                     width: "50px",
                     marginRight: "10px",
@@ -92,7 +181,7 @@ const Login = () => {
                   alt=""
                 />
                 <img
-                  //   onClick={handleGithubLogin}
+                    onClick={handleGithubLogin}
                   style={{
                     width: "50px",
                     marginRight: "10px",
