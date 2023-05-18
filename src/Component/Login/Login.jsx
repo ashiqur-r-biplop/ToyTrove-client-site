@@ -2,7 +2,10 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import './Login.css'
+import "./Login.css";
+
+import googleImg from '../../assets/Image/social/google.png'
+import gitHubImg from '../../assets/Image/social/github.png'
 
 const Login = () => {
   const [toggleIcon, setToggleIcon] = useState(false);
@@ -21,7 +24,7 @@ const Login = () => {
           className="flex flex-col justify-center items-center h-full"
         >
           <div className="flex flex-col justify-start items-start fullForm lg:w-2/6 md:w-3/6  shadow-2xl">
-            <h2 className="text-2xl mb-2" style={{ color: "#910000" }}>
+            <h2 className="text-2xl mb-2" style={{ color: "#32c770" }}>
               Please Login
             </h2>
             <input
@@ -54,9 +57,7 @@ const Login = () => {
                 )}
               </span>
             </div>
-            <p
-              className="mb-3 text-end w-full forget-password"
-            >
+            <p className="mb-3 text-end w-full forget-password">
               Forget Password
             </p>
             {/* <span className="text-green-500 m-0">{successMassage}</span> */}
@@ -64,38 +65,42 @@ const Login = () => {
             <p className="mb-2">
               Don't Have an Account?{" "}
               <Link
-                style={{ color: "#910000", fontWeight: 700 }}
+                style={{ color: "#32c770", fontWeight: 700 }}
                 to="/register"
               >
                 Please Register
               </Link>
             </p>
-            <input type="submit" value="Login" className="btn-primary" />
+            <input
+              type="submit"
+              value="Login"
+              className="bg-[#32c770] border-0"
+            />
             <div className="pt-5 flex items-center justify-between w-full">
               <p>Or Sign in with:</p>
               <div className="flex items-center justify-between">
                 <img
-                //   onClick={handleGoogleLogin}
+                  //   onClick={handleGoogleLogin}
                   style={{
                     width: "50px",
                     marginRight: "10px",
-                    border: "2px solid #910000",
+                    border: "2px solid #32c770",
                     cursor: "pointer",
                     padding: "10px",
                   }}
-                //   src={googleImg}
+                  src={googleImg}
                   alt=""
                 />
                 <img
-                //   onClick={handleGithubLogin}
+                  //   onClick={handleGithubLogin}
                   style={{
                     width: "50px",
                     marginRight: "10px",
-                    border: "2px solid #910000",
+                    border: "2px solid #32c770",
                     cursor: "pointer",
                     padding: "10px",
                   }}
-                //   src={gitHubImg}
+                  src={gitHubImg}
                   alt=""
                 />
               </div>

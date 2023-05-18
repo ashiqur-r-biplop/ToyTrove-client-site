@@ -26,14 +26,14 @@ const AllToys = () => {
           <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
             All <span className="text-[#32c770]">Toys</span>
           </h1>
-          <div className="flex justify-center m-4">
+          <div className="flex justify-center items-start">
             <input
               onChange={handleSearch}
-              className="w-full md:w-2/4 px-2 md:py-3"
+              className="w-full md:w-2/4 px-2"
               type="text"
               placeholder="Search By Toy Name"
             />
-            <button className="bg-[#32c770] py-4 px-3 font-semibold text-white">
+            <button className="bg-[#32c770] py-3 px-3 font-semibold text-white">
               Search
             </button>
           </div>

@@ -17,7 +17,7 @@ const AddToys = () => {
             <div className="">
               <div className="">
                 <div className="card-body">
-                  <div className="md:flex items-center justify-between w-full">
+                  <div className="md:flex justify-between w-full">
                     <div className="md:w-3/4">
                       <div className="form-control md:w-3/4 ">
                         <label className="label">
@@ -69,7 +69,7 @@ const AddToys = () => {
                       </div>
                     </div>
                     <div className="md:w-3/4">
-                      <div className="form-control md:w-3/4 ">
+                      <div className="form-control md:w-3/4 mb-5">
                         <label className="label">
                           <span className="label-text">Category</span>
                         </label>
