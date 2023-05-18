@@ -1,0 +1,25 @@
+input {
+    margin-bottom: 20px;
+    width: 100%;
+    padding: 10px 10px;
+    outline: none;
+    background-color: none
+}
+
+input:focus {
+    border: 2px solid #910000;
+}
+
+.fullForm {
+    padding: 48px 28px;
+}
+
+.forget-password {
+    cursor: pointer;
+    color: #910000;
+
+}
+
+.toggle-icon {
+    cursor: pointer;
+}
