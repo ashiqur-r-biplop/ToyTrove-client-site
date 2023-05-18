@@ -2,6 +2,7 @@ import React from "react";
 import Header from "../Header/Header";
 import Gallery from "../Gallery/Gallery";
 import Category from "../Category/Category";
+import Popular from "../Popular/Popular";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <Header></Header>
       <Gallery></Gallery>
       <Category></Category>
+      <Popular></Popular>
     </div>
   );
 };

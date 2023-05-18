@@ -19,13 +19,13 @@ const Gallery = () => {
       </h1>
       <div>
         <div className="grid lg:grid-cols-3 grid-cols-1 mx-auto">
-          <div data-aos="fade-right">
+          <div data-aos="fade-up">
             <img className="lg:w-2/3 mx-auto m-3" src={img1} alt="" />
           </div>
-          <div data-aos="flip-left">
+          <div data-aos="fade-down">
             <img className="lg:w-2/3 mx-auto m-3" src={img4} alt="" />
           </div>
-          <div data-aos="fade-left">
+          <div data-aos="fade-up">
             <img className="lg:w-2/3 mx-auto m-3" src={img5} alt="" />
           </div>
         </div>

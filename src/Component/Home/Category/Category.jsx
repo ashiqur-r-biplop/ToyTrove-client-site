@@ -17,6 +17,7 @@ const Category = () => {
     fetch("fakeData.json")
       .then((res) => res.json())
       .then((data) => {
+        // data base thekey data filter hoa ashbey
         const filterData = data.filter(
           (tabData) => tabData?.title === tabTitle
         );
@@ -28,7 +29,7 @@ const Category = () => {
   const tabPanel = ["data1", "data2", "data3"];
   return (
     <div className="container mx-auto my-20" data-aos="zoom-out">
-      <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 ">
+      <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
         Our <span className="text-[#32c770] border-[#32c770]">Category</span>
       </h1>
       <div>
@@ -42,27 +43,27 @@ const Category = () => {
             <TabPanel key={i}>
               <div
                 className="grid md:grid-cols-2 grid-cols-1"
-                data-aos="zoom-in-right"
+                
               >
-                {tabsData?.map((data) => (
-                  <div className="card md:w-96 bg-base-100 shadow-xl  m-3">
+                {tabsData?.map((data , i) => (
+                  <div className="card md:w-96 bg-base-100 shadow-xl my-3 mx-auto lg:mt-14" key={i} data-aos="zoom-in">
                     <figure>
                       <img src={data?.picture} alt="Shoes" />
                     </figure>
-                    <div className="card-body">
-                      <h2 className="card-title">Name: {data?.name}</h2>
+                    <div className="card-body relative">
+                      <h2 className="card-title absolute -top-10 bg-white px-3 py-2 shadow ">Name: {data?.name}</h2>
                       <p className="text-start">Price : ${data?.price}</p>
                       <div className="flex items-center">
                         <span className="mb-3">Ratings: </span>
                         <Rating
-                        className="ms-2"
+                          className="ms-2"
                           initialRating={data?.rating}
                           placeholderRating={<FaStar></FaStar>}
                           readonly
                         />
                       </div>
-                      <div className="card-actions justify-end">
-                        <button className="bg-[#32c770] text-[#000000] px-4 py-3 md:px-10 md:py-4 rounded-full font-semibold flex items-center uppercase">
+                      <div className="card-actions">
+                        <button className="bg-[#32c770] text-[#fff] font-semibold px-3 py-2 rounded flex items-center uppercase">
                           View Details
                         </button>
                       </div>
