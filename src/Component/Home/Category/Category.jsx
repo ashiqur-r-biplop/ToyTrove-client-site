@@ -71,7 +71,7 @@ const Category = () => {
                     data-aos="fade-down"
                   >
                     <figure>
-                      <img src={data?.photoUrl} alt="" />
+                      <img style={{height: "250px" , width:"100%"}}  src={data?.photoUrl} alt="" />
                     </figure>
                     <div className="card-body relative">
                       <h2 className="card-title absolute -top-10 bg-white px-3 py-2 shadow ">
@@ -80,7 +80,6 @@ const Category = () => {
                       <p className="text-start">Price : ${data?.price}</p>
                       <div className="flex items-center">
                         <span className="mb-3">Ratings: </span>
-
                         <Rating
                           className="ms-2"
                           initialRating={data?.rating}

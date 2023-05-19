@@ -63,6 +63,9 @@ const AllToys = () => {
             <thead>
               <tr>
                 <th className="px-6 py-3 text-left text-xs font-medium text-[#32c770] uppercase tracking-wider">
+                  #
+                </th>
+                <th className="px-6 py-3 text-left text-xs font-medium text-[#32c770] uppercase tracking-wider">
                   Seller
                 </th>
                 <th className="px-6 py-3 text-left text-xs font-medium text-[#32c770] uppercase tracking-wider">
@@ -81,8 +84,11 @@ const AllToys = () => {
               </tr>
             </thead>
             <tbody className="bg-white divide-y divide-gray-200">
-              {toys.slice(0, 20).map((toy, index) => (
+              {toys.map((toy, index) => (
                 <tr key={index}>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {index +1}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {toy.sellerName}
                   </td>
