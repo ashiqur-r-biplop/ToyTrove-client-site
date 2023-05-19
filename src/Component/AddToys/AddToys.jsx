@@ -1,8 +1,10 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import ReactStars from "react-rating-stars-component";
+import { AuthContext } from "../../AuthProvide/AuthProvider";
 
 const AddToys = () => {
   const [rating, setRating] = useState(0);
+  const { user } = useContext(AuthContext);
   const ratingChanged = (newRating) => {
     setRating(newRating);
   };
@@ -25,6 +27,7 @@ const AddToys = () => {
                         </label>
                         <input
                           name="sellerName"
+                          value={user?.displayName}
                           type="text"
                           placeholder="Seller Name"
                           className="input w-full input-bordered"
@@ -37,6 +40,7 @@ const AddToys = () => {
                         </label>
                         <input
                           type="email"
+                          value={user?.email}
                           placeholder="Seller Email"
                           name="email"
                           className="input input-bordered w-full"

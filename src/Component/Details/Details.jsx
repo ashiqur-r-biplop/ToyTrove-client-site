@@ -11,7 +11,7 @@ const Details = () => {
         Category: <span className="text-[#32c770]">{SingleToy?.category}</span>
       </h1>
       <div className="hero lg:h-[70vh]">
-        <div className="hero-content flex-col lg:flex-row lg:justify-center lg:items-start">
+        <div className="hero-content flex-col lg:flex-row lg:justify-center lg:items-center">
           <div className="lg:w-1/2 w-full">
             <img
               src={SingleToy?.photoUrl}
@@ -29,22 +29,24 @@ const Details = () => {
               {SingleToy?.sellerEmail}.
             </h2>
             <p className="md:text-3xl text-xl">
-              <span className="font-semibold"> Toy Name: </span>
+              <span className="font-semibold"> Toy Name : </span>
               {SingleToy?.toyName}
             </p>
             <p className="md:text-3xl text-xl">
-              <span className="font-semibold">Price: $</span>
+              <span className="font-semibold">Price : $</span>
               {SingleToy?.price}
             </p>
             <p className="md:text-3xl text-xl">
-              <span className="font-semibold">available quantity:</span>
+              <span className="font-semibold">available quantity :</span>
               {SingleToy?.quantity}
             </p>
             <p className="md:text-3xl text-xl">
-              <span className="font-semibold">Rating: </span>
+              <span className="font-semibold">Rating : </span>
               {SingleToy?.rating}
             </p>
-            <p className="text-xl">{SingleToy?.description}</p>
+            <p className="text-xl">
+              <span className="font-semibold md:text-3xl text-xl">Description :</span> {SingleToy?.description}
+            </p>
           </div>
         </div>
       </div>
