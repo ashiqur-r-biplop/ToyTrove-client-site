@@ -1,15 +1,18 @@
 import Aos from "aos";
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Rating from "react-rating";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "aos/dist/aos.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../AuthProvide/AuthProvider";
+import Swal from "sweetalert2";
 
 const Category = () => {
   const [tabCategory, setTabCategory] = useState("Teddy");
   const [tabsData, setTabsData] = useState([]);
-
+  const { user } = useContext(AuthContext);
+  const navigate = useNavigate();
   const handleTabs = (title) => {
     setTabCategory(title);
   };
@@ -19,6 +22,27 @@ const Category = () => {
       .then((data) => setTabsData(data));
     Aos.init();
   }, [tabCategory]);
+
+  const handleViewDetails = (id) => {
+    if (!user) {
+      Swal.fire({
+        title: "Please First login And then go View Details page",
+        text: "Please Login",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#32c770",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Go to Login! ",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          console.log(result.isConfirmed);
+          navigate("/login");
+        }
+      });
+    } else {
+      navigate(`details/${id}`);
+    }
+  };
 
   const tabPanel = ["data1", "data2", "data3"];
   return (
@@ -64,11 +88,12 @@ const Category = () => {
                         />
                       </div>
                       <div className="card-actions">
-                        <Link to={`details/${data?._id}`}>
-                          <button className="bg-[#32c770] text-[#fff] font-semibold px-3 py-2 rounded flex items-center uppercase">
-                            View Details
-                          </button>
-                        </Link>
+                        <button
+                          onClick={() => handleViewDetails(data?._id)}
+                          className="bg-[#32c770] text-[#fff] font-semibold px-3 py-2 rounded flex items-center uppercase"
+                        >
+                          View Details
+                        </button>
                       </div>
                     </div>
                   </div>

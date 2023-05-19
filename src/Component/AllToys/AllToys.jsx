@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./AllToys.css";
+import { Link } from "react-router-dom";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
@@ -73,12 +74,12 @@ const AllToys = () => {
                     {toy.quantity}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <a
-                      href={toy.detailsUrl}
+                    <Link to={`/details/${toy?._id}`}
+                      
                       className="text-indigo-600 hover:text-indigo-900"
                     >
                       View Details
-                    </a>
+                    </Link>
                   </td>
                 </tr>
               ))}

@@ -68,14 +68,14 @@ const AddToys = () => {
                         />
                       </div>
                     </div>
-                    <div className="md:w-3/4 mr-auto">
-                      <div className="form-control md:w-3/4 mb-5 ml-0">
+                    <div className="md:w-3/4">
+                      <div className="form-control md:w-3/4 mb-5 ml-auto">
                         <label className="label">
                           <span className="label-text">Category</span>
                         </label>
                         <select
                           name="cars"
-                          className="input input-bordered w-full ml-0"
+                          className="input input-bordered w-full"
                           id="cars"
                         >
                           <option value="TeddyBear">Teddy bear</option>
@@ -83,7 +83,7 @@ const AddToys = () => {
                           <option value="Dogs">Dogs</option>
                         </select>
                       </div>
-                      <div className="form-control md:w-3/4 ">
+                      <div className="form-control md:w-3/4 md:ml-auto">
                         <label className="label">
                           <span className="label-text">Price</span>
                         </label>
@@ -96,7 +96,7 @@ const AddToys = () => {
                         />
                       </div>
 
-                      <div className="form-control md:w-3/4 ">
+                      <div className="form-control md:w-3/4 md:ml-auto">
                         <label className="label">
                           <span className="label-text">Available quantity</span>
                         </label>
@@ -108,7 +108,7 @@ const AddToys = () => {
                           required
                         />
                       </div>
-                      <div className="form-control md:w-3/4 ">
+                      <div className="form-control md:w-3/4 md:ml-auto">
                         <label className="label">
                           <span className="label-text">Detail description</span>
                         </label>
@@ -117,7 +117,7 @@ const AddToys = () => {
                           type="text"
                           placeholder="Detail description"
                           name="description"
-                          className="input input-bordered w-full"
+                          className="input input-bordered w-full pt-2"
                           required
                           id=""
                           cols="30"
