@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 import "./AllToys.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
   const [search, setSearch] = useState("");
+  const navigate = useNavigate();
   useEffect(() => {
     fetch("http://localhost:5000/allToys")
       .then((res) => res.json())
@@ -20,6 +22,30 @@ const AllToys = () => {
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, [search]);
+
+  const handleViewDetails = (id) => {
+    Swal.fire({
+      title: "Do you really want to read this page?",
+      text: "Confirm now",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#32c770",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "Your work has been saved",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(`/details/${id}`);
+      }
+    });
+  };
+
   return (
     <>
       <div className="mt-28 container mx-auto">
@@ -74,12 +100,9 @@ const AllToys = () => {
                     {toy.quantity}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <Link to={`/details/${toy?._id}`}
-                      
-                      className="text-indigo-600 hover:text-indigo-900"
-                    >
+                    <button onClick={() => handleViewDetails(toy?._id)}>
                       View Details
-                    </Link>
+                    </button>
                   </td>
                 </tr>
               ))}

@@ -11,6 +11,7 @@ import { AuthContext } from "../../AuthProvide/AuthProvider";
 const Register = () => {
   const [toggleIcon, setToggleIcon] = useState(false);
   const [errorMassage, setErrorMassage] = useState("");
+  const [successMessage , setSuccessMessage]= useState("")
   const navigate = useNavigate();
   const { signUp, signInGoogle, signInGithub, ProfileUpdate, setReload } =
     useContext(AuthContext);
@@ -26,14 +27,17 @@ const Register = () => {
     const password = form.password.value;
     if (password < 6) {
       setErrorMassage("Minimum six characters provide your password");
+      setSuccessMessage("")
       return;
     } else if (!/^(?=.*[A-Za-z])/.test(password)) {
       setErrorMassage("At least one letter");
+      setSuccessMessage("")
     } else {
       signUp(email, password)
         .then((result) => {
           const loggedUser = result.user;
           setErrorMassage("");
+          setSuccessMessage("")
           ProfileUpdate(name, photoUrl).then(() => {
             setReload(true);
           });
@@ -55,6 +59,7 @@ const Register = () => {
             footer: '<a href="">Why do I have this issue?</a>',
           });
           setErrorMassage(err.message);
+          setSuccessMessage("")
         });
     }
   };
@@ -66,6 +71,7 @@ const Register = () => {
       return;
     } else {
       setErrorMassage("");
+      setSuccessMessage("Email validation is complete")
     }
   };
   const handlePassword = (e) => {
@@ -73,11 +79,14 @@ const Register = () => {
     // console.log(passwordHandle);
     if (passwordHandle.length < 6) {
       setErrorMassage("Minimum six characters provide your password");
+      setSuccessMessage("")
       return;
     } else if (!/^(?=.*[A-Za-z])/.test(passwordHandle)) {
       setErrorMassage("At least one letter");
+      setSuccessMessage("")
     } else {
       setErrorMassage("");
+      setSuccessMessage("The password is hard to complete")
     }
   };
   const handleGoogleLogin = () => {
@@ -173,6 +182,7 @@ const Register = () => {
               </span>
             </div>
             <p className="text-red-500 mb-2 ">{errorMassage}</p>
+            {successMessage && <p className="text-[#32c770] mb-2 ">{successMessage}</p>}
             <p className="mb-2">
               Already have an account?{" "}
               <Link style={{ color: "#32c770", fontWeight: 700 }} to="/login">
