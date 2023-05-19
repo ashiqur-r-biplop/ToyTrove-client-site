@@ -8,6 +8,7 @@ import Register from "../Component/Login/Register";
 import { element } from "prop-types";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Details from "../Component/Details/Details";
+import MyToy from "../Component/MyToy/MyToy";
 
 const router = createBrowserRouter([
   {
@@ -26,7 +27,7 @@ const router = createBrowserRouter([
         path: "/myToys",
         element: (
           <PrivateRoute>
-            <h1>MyToy</h1>
+            <MyToy></MyToy>
           </PrivateRoute>
         ),
       },

@@ -1,6 +1,8 @@
 import React from "react";
 import { useLoaderData } from "react-router-dom";
 import Category from "../Home/Category/Category";
+import Rating from "react-rating";
+import { FaStar, FaStarHalf, FaStarHalfAlt } from "react-icons/fa";
 
 const Details = () => {
   const SingleToy = useLoaderData();
@@ -40,12 +42,22 @@ const Details = () => {
               <span className="font-semibold">available quantity :</span>
               {SingleToy?.quantity}
             </p>
-            <p className="md:text-3xl text-xl">
-              <span className="font-semibold">Rating : </span>
-              {SingleToy?.rating}
+            <p className="md:text-3xl text-xl flex items-center">
+              <span className="font-semibold">Rating :</span>
+              <Rating
+                className="mt-3"
+                placeholderRating={SingleToy?.rating}
+                emptyIcon={<i className="far fa-star"></i>}
+                halfIcon={<i className="fa fa-star-half-alt"></i>}
+                fullIcon={<i className="fa fa-star"></i>}
+                readonly
+              />
             </p>
             <p className="text-xl">
-              <span className="font-semibold md:text-3xl text-xl">Description :</span> {SingleToy?.description}
+              <span className="font-semibold md:text-3xl text-xl">
+                Description :
+              </span>{" "}
+              {SingleToy?.description}
             </p>
           </div>
         </div>
