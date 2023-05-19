@@ -7,6 +7,7 @@ import Login from "../Component/Login/Login";
 import Register from "../Component/Login/Register";
 import { element } from "prop-types";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Details from "../Component/Details/Details";
 
 const router = createBrowserRouter([
   {
@@ -56,6 +57,16 @@ const router = createBrowserRouter([
       {
         path: "/profile",
         element: <>this is my profile</>,
+      },
+      {
+        path: "/details/:id",
+        element: (
+          <PrivateRoute>
+            <Details></Details>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/details/${params.id}`),
       },
     ],
   },

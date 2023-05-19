@@ -4,6 +4,7 @@ import Rating from "react-rating";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "aos/dist/aos.css";
+import { Link } from "react-router-dom";
 
 const Category = () => {
   const [tabCategory, setTabCategory] = useState("Teddy");
@@ -15,7 +16,7 @@ const Category = () => {
   useEffect(() => {
     fetch(`http://localhost:5000/toys?category=${tabCategory}`)
       .then((res) => res.json())
-      .then((data) => setTabsData(data))
+      .then((data) => setTabsData(data));
     Aos.init();
   }, [tabCategory]);
 
@@ -51,7 +52,7 @@ const Category = () => {
                       <p className="text-start">Price : ${data?.price}</p>
                       <div className="flex items-center">
                         <span className="mb-3">Ratings: </span>
-                       
+
                         <Rating
                           className="ms-2"
                           initialRating={data?.rating}
@@ -63,9 +64,11 @@ const Category = () => {
                         />
                       </div>
                       <div className="card-actions">
-                        <button className="bg-[#32c770] text-[#fff] font-semibold px-3 py-2 rounded flex items-center uppercase">
-                          View Details
-                        </button>
+                        <Link to={`details/${data?._id}`}>
+                          <button className="bg-[#32c770] text-[#fff] font-semibold px-3 py-2 rounded flex items-center uppercase">
+                            View Details
+                          </button>
+                        </Link>
                       </div>
                     </div>
                   </div>
