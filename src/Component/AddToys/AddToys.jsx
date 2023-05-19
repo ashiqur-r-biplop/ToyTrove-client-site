@@ -7,7 +7,7 @@ const AddToys = () => {
     setRating(newRating);
   };
   return (
-    <div className="mt-28 container mx-auto">
+    <div className="md:mt-28 mt-5 container mx-auto">
       <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
         Add <span className="text-[#32c770]">Toys</span>
       </h1>
@@ -69,7 +69,7 @@ const AddToys = () => {
                       </div>
                     </div>
                     <div className="md:w-3/4">
-                      <div className="form-control md:w-3/4 mb-5 ml-auto">
+                      <div className="form-control md:w-3/4 mb-5 md:ml-auto">
                         <label className="label">
                           <span className="label-text">Category</span>
                         </label>

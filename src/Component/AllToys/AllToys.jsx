@@ -42,12 +42,12 @@ const AllToys = () => {
 
   return (
     <>
-      <div className="mt-28 container mx-auto">
+      <div className="md:mt-28 mt-5 container mx-auto">
         <div className="text-center my-5">
           <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
             All <span className="text-[#32c770]">Toys</span>
           </h1>
-          <div className="flex justify-center items-start">
+          <div className="flex justify-center items-start m-3">
             <input
               onChange={handleSearch}
               className="w-full md:w-2/4 px-2"
