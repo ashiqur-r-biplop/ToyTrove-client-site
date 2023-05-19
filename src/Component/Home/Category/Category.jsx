@@ -1,5 +1,6 @@
 import Aos from "aos";
 import React, { useContext, useEffect, useState } from "react";
+import { useLocation } from "react-router-dom";
 import Rating from "react-rating";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -13,7 +14,9 @@ const Category = () => {
   const [tabCategory, setTabCategory] = useState("Teddy");
   const [tabsData, setTabsData] = useState([]);
   const { user } = useContext(AuthContext);
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
+  const location = useLocation()
+  // console.log(location);
   const handleTabs = (title) => {
     setTabCategory(title);
   };
@@ -68,7 +71,7 @@ const Category = () => {
                     data-aos="fade-down"
                   >
                     <figure>
-                      <img src={data?.picture} alt="" />
+                      <img src={data?.photoUrl} alt="" />
                     </figure>
                     <div className="card-body relative">
                       <h2 className="card-title absolute -top-10 bg-white px-3 py-2 shadow ">

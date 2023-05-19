@@ -1,83 +1,101 @@
 [
   {
-    "Seller": "Biplop",
+    "sellerName": "Biplop",
+    "sellerEmail": "biplop@gmail.com",
     "category": "Teddy",
-    "picture": "https://i.ibb.co/qsGv2TT/img-2.jpg",
+    "photoUrl": "https://i.ibb.co/qsGv2TT/img-2.jpg",
     "name": "Snuggles",
     "price": "19.99",
     "quantity": "20",
-    "rating": 4.5
+    "rating": 4.5,
+    "description": "A cuddly teddy bear perfect for snuggling and comforting."
   },
   {
-    "Seller": "Shohan",
+    "sellerName": "Shohan",
+    "sellerEmail": "Shohan@gmail.com",
     "category": "Teddy",
-    "picture": "https://i.ibb.co/LkTv9d2/img-5.jpg",
+    "photoUrl": "https://i.ibb.co/LkTv9d2/img-5.jpg",
     "name": "Cuddles",
     "price": "29.99",
     "quantity": "20",
-    "rating": 3.8
+    "rating": 3.8,
+    "description": "A lovable teddy bear that brings warmth and comfort."
   },
   {
-    "Seller": "Emon",
-    "category": "Horse",    
-    "picture": "https://i.ibb.co/1ms5cp2/img-1.jpg",
+    "sellerName": "Emon",
+    "sellerEmail": "Emon@gmail.com",
+    "category": "Horse",
+    "photoUrl": "https://i.ibb.co/1ms5cp2/img-1.jpg",
     "name": "Thunder",
     "price": "14.99",
-    "quantity": "20",         
-    "rating": 4.2
+    "quantity": "20",
+    "rating": 4.2,
+    "description": "A magnificent horse toy with a sleek and powerful appearance."
   },
   {
-    "Seller": "Laden",
+    "sellerName": "Laden",
+    "sellerEmail": "Laden@gmail.com",
     "category": "Horse",
-    "picture": "https://i.ibb.co/B6WqWqT/img-3.jpg",
+    "photoUrl": "https://i.ibb.co/B6WqWqT/img-3.jpg",
     "name": "Starlight",
     "price": "24.99",
     "quantity": "20",
-    "rating": 4.7
+    "rating": 4.7,
+    "description": "Experience the enchantment of riding with Starlight, the beautiful and graceful horse toy."
   },
   {
-    "Seller": "Akib",
+    "sellerName": "Akib",
+    "sellerEmail": "Akib@gmail.com",
     "category": "Dogs",
-    "picture": "https://i.ibb.co/wrbtNg0/img-4.jpg",
+    "photoUrl": "https://i.ibb.co/wrbtNg0/img-4.jpg",
     "name": "Max",
     "price": "9.99",
     "quantity": "20",
-    "rating": 3.5
+    "rating": 3.5,
+    "description": "Meet Max, the lovable and playful dog toy that will bring joy to your little ones."
   },
   {
-    "Seller": "Tanjil",
+    "sellerName": "Tanjil",
+    "sellerEmail": "Tanjil@gmail.com",
     "category": "Dogs",
-    "picture": "https://i.ibb.co/2P4rXpp/img-6.jpg",
+    "photoUrl": "https://i.ibb.co/2P4rXpp/img-6.jpg",
     "name": "Bella",
     "price": "39.99",
     "quantity": "20",
-    "rating": 4.9
+    "rating": 4.9,
+    "description": "Introducing Bella, the perfect companion for your little ones. With her adorable features and soft fur, she will capture their hearts and provide endless hours of fun and play."
   },
   {
-    "Seller": "zidan",
+    "sellerName": "zidan",
+    "sellerEmail": "zidan@gmail.com",
     "category": "Teddy",
-    "picture": "https://i.ibb.co/TMZxvgM/img-9.jpg",
+    "photoUrl": "https://i.ibb.co/TMZxvgM/img-9.jpg",
     "name": "Honey Bear",
     "price": "$15.99",
     "quantity": "20",
-    "rating": 4.1
+    "rating": 4.1,
+    "description": "Meet Honey Bear, the cuddly teddy companion your child will adore. With its soft fur and lovable design, Honey Bear is perfect for snuggling and playtime."
   },
   {
-    "Seller": "tilok",
+    "sellerName": "tilok",
+    "sellerEmail": "tilok@gmail.com",
     "category": "Horse",
-    "picture": "https://i.ibb.co/zSdw9J8/img-8.jpg",
+    "photoUrl": "https://i.ibb.co/zSdw9J8/img-8.jpg",
     "name": "Thunderbolt",
     "price": "$12.99",
     "quantity": "20",
-    "rating": 3.9
+    "rating": 3.9,
+    "description": "Introducing Thunderbolt, the majestic horse toy that will gallop its way into your child's heart. With its beautiful mane and realistic features, Thunderbolt is perfect for imaginative play and horse enthusiasts."
   },
   {
-    "Seller": "Dipu",
+    "sellerName": "Dipu",
+    "sellerEmail": "Dipu@gmail.com",
     "category": "Dogs",
-    "picture": "https://i.ibb.co/0VJN1GS/img-7.jpg",
+    "photoUrl": "https://i.ibb.co/0VJN1GS/img-7.jpg",
     "name": "Chewbacca",
     "price": "$34.99",
     "quantity": "20",
-    "rating": 4.6
+    "rating": 4.6,
+    "description": "Meet Chewbacca, the adorable and fluffy dog toy that will bring joy and companionship to your little one. With its soft fur and friendly demeanor, Chewbacca is the perfect cuddle buddy and playmate for children of all ages."
   }
 ]
