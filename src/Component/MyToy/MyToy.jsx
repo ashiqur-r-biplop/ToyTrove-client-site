@@ -1,25 +1,45 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvide/AuthProvider";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUpRightFromSquare,
-  faCross,
-  faMultiply,
-} from "@fortawesome/free-solid-svg-icons";
+import Swal from "sweetalert2";
 
 const MyToy = () => {
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
+  const [control, setControl] = useState(false);
 
   useEffect(() => {
     fetch(`http://localhost:5000/myToy?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
-  }, []);
+  }, [control]);
   // console.log(toys);
+  const handleDelete = (id) => {
+    if (id) {
+      Swal.fire({
+        title: "Are you sure You want to delete this Toy ?",
+        text: "Please Login !!!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#32c770",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirm",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/delete/${id}`, {
+            method: "DELETE",
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              if (result?.deletedCount) {
+                setControl(!control);
+              }
+            });
+        }
+      });
+    }
+  };
   return (
     <div>
       <>
@@ -57,7 +77,7 @@ const MyToy = () => {
                           <img
                             src={toy?.photoUrl}
                             className="w-full h-full"
-                            alt="Album"
+                            alt={toy?.toyName}
                           />
                         </div>
                         <div className="lg:w-1/2 w-full p-2 md:flex md:flex-col md:justify-center md:items-stat space-y-2">
@@ -74,20 +94,26 @@ const MyToy = () => {
                           <p className="text-xl text-start">
                             rating: {toy?.rating}
                           </p>
-                          <p className="text-sm text-start">
-                            Description : {toy?.description}
+                          <p className="text-sm text-start h-14">
+                            Description : {toy?.description.slice(0, 50)}...
                           </p>
-                          <div className="card-actions justify-start">
-                            <Link to={`/update/${toy?._id}`}>
-                              <button className="text-sm bg-[#32c770] px-3 py-3 rounded-sm text-white">
-                                Update
-                              </button>
-                            </Link>
+                          <div className="space-y-2">
+                            <div>
+                              <Link to={`/update/${toy?._id}`}>
+                                <button className="text-sm w-full bg-[#32c770] px-3 py-3 rounded-sm text-white">
+                                  Update
+                                </button>
+                              </Link>
+                            </div>
+                            <div
+                              onClick={() => handleDelete(toy?._id)}
+                              style={{ cursor: "pointer" }}
+                              className="text-sm w-full bg-[#ff0000c0] px-3 py-3 rounded-sm text-white"
+                            >
+                              delete
+                            </div>
                           </div>
                         </div>
-                      </div>
-                      <div  className="absolute -top-4 shadow-lg px-2 rounded-full right-0" >
-                        <FontAwesomeIcon className="w-full" style={{color:"red" , cursor:"pointer" }} icon={faMultiply}></FontAwesomeIcon>
                       </div>
                     </div>
                   ))}

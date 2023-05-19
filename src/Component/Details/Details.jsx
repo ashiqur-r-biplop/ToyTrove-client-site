@@ -18,7 +18,7 @@ const Details = () => {
             <img
               src={SingleToy?.photoUrl}
               alt={`"${SingleToy?.toyName}"`}
-              className="w-full rounded-lg shadow-2xl"
+              className="w-[100%] rounded-lg shadow-2xl lg:h-[500px]"
             />
           </div>
           <div className="lg:w-1/2 w-full mt-4 lg:mt-0 space-y-3">

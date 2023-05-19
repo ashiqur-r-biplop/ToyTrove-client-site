@@ -1,14 +1,13 @@
 import Aos from "aos";
 import React, { useContext, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import Rating from "react-rating";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "aos/dist/aos.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvide/AuthProvider";
 import Swal from "sweetalert2";
-import './Category.css'
+import "./Category.css";
 
 const Category = () => {
   const [tabCategory, setTabCategory] = useState("Teddy");
@@ -46,7 +45,7 @@ const Category = () => {
     }
   };
 
-  const tabPanel = ["data1", "data2", "data3"];
+  const tabPanel = ["tab1", "tab2", "tab3"];
   return (
     <div className="container mx-auto my-20" data-aos="fade-down">
       <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
@@ -69,7 +68,11 @@ const Category = () => {
                     data-aos="fade-down"
                   >
                     <figure>
-                      <img style={{height: "250px" , width:"100%"}}  src={data?.photoUrl} alt="" />
+                      <img
+                        style={{ height: "250px", width: "100%" }}
+                        src={data?.photoUrl}
+                        alt={data?.toyName}
+                      />
                     </figure>
                     <div className="card-body relative">
                       <h2 className="card-title absolute -top-10 bg-white px-3 py-2 shadow ">

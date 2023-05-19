@@ -165,7 +165,7 @@ const Update = () => {
                   </label>
                   <input
                     defaultValue={toys?.price}
-                    type="text"
+                    type="number"
                     placeholder="Price"
                     name="price"
                     className="input input-bordered w-full"

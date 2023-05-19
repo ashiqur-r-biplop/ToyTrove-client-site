@@ -141,7 +141,7 @@ const AddToys = () => {
                     <span className="label-text">Price</span>
                   </label>
                   <input
-                    type="text"
+                    type="number"
                     placeholder="Price"
                     name="price"
                     className="input input-bordered w-full"
