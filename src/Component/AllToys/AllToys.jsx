@@ -1,8 +1,7 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./AllToys.css";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import { AuthContext } from "../../AuthProvide/AuthProvider";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
