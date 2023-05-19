@@ -136,7 +136,7 @@ const Login = () => {
               >
                 {toggleIcon ? (
                   <FontAwesomeIcon
-                    className="block "
+                    className="block"
                     icon={faEyeSlash}
                   ></FontAwesomeIcon>
                 ) : (

@@ -108,7 +108,7 @@ const Navbar = () => {
                             }`}
                             className="hidden md:block"
                             src={user?.photoURL}
-                            alt=""
+                            alt={user?.displayName}
                           />
                         </div>
                       </label>
