@@ -14,8 +14,8 @@ const Category = () => {
   const [tabCategory, setTabCategory] = useState("Teddy");
   const [tabsData, setTabsData] = useState([]);
   const { user } = useContext(AuthContext);
-  // const navigate = useNavigate();
-  const location = useLocation()
+  const navigate = useNavigate();
+  // const location = useLocation()
   // console.log(location);
   const handleTabs = (title) => {
     setTabCategory(title);
@@ -30,7 +30,7 @@ const Category = () => {
   const handleViewDetails = (id) => {
     if (!user) {
       Swal.fire({
-        title: "Please First login And then go View Details page",
+        title: "You have to log in first to view details",
         text: "Please Login !!!",
         icon: "warning",
         showCancelButton: true,
@@ -40,11 +40,11 @@ const Category = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           console.log(result.isConfirmed);
-          navigate("/login");
+          navigate(`/details/${id}`);
         }
       });
     } else {
-      navigate(`details/${id}`);
+      navigate(`/details/${id}`);
     }
   };
 

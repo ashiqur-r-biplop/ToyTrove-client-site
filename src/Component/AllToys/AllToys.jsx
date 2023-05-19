@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./AllToys.css";
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvide/AuthProvider";
 
 const AllToys = () => {
   const [toys, setToys] = useState([]);
@@ -34,13 +35,6 @@ const AllToys = () => {
       confirmButtonText: "Yes",
     }).then((result) => {
       if (result.isConfirmed) {
-        Swal.fire({
-          position: "top-end",
-          icon: "success",
-          title: "Your work has been saved",
-          showConfirmButton: false,
-          timer: 1500,
-        });
         navigate(`/details/${id}`);
       }
     });
@@ -90,7 +84,9 @@ const AllToys = () => {
             <tbody className="bg-white divide-y divide-gray-200">
               {toys.slice(0, 20).map((toy, index) => (
                 <tr key={index}>
-                  <td className="px-6 py-4 whitespace-nowrap">{toy.sellerName}</td>
+                  <td className="px-6 py-4 whitespace-nowrap">
+                    {toy.sellerName}
+                  </td>
                   <td className="px-6 py-4 whitespace-nowrap">{toy.toyName}</td>
                   <td className="px-6 py-4 whitespace-nowrap">
                     {toy.category}

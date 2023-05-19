@@ -50,14 +50,15 @@ const Navbar = () => {
                 >
                   Home
                 </Link>
+
+                <Link
+                  to="/allToy"
+                  className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                >
+                  All Toys
+                </Link>
                 {user && (
                   <>
-                    <Link
-                      to="/allToy"
-                      className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
-                    >
-                      All Toys
-                    </Link>
                     <Link
                       to="/myToys"
                       className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
@@ -217,18 +218,22 @@ const Navbar = () => {
             >
               All Toy
             </Link>
-            <Link
-              to="/myToys"
-              className="text-[#fff] hover:bg-[#32c770] hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              MYToy
-            </Link>
-            <Link
-              to="/addToy"
-              className="text-[#fff] hover:bg-[#32c770] hover:text-white block px-3 py-2 rounded-md text-base font-medium"
-            >
-              Add a Toy
-            </Link>
+            {user && (
+              <>
+                <Link
+                  to="/myToys"
+                  className="text-[#fff] hover:bg-[#32c770] hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                >
+                  MYToy
+                </Link>
+                <Link
+                  to="/addToy"
+                  className="text-[#fff] hover:bg-[#32c770] hover:text-white block px-3 py-2 rounded-md text-base font-medium"
+                >
+                  Add a Toy
+                </Link>
+              </>
+            )}
             <Link
               to="/blogs"
               className="text-[#fff] hover:bg-[#32c770] hover:text-white block px-3 py-2 rounded-md text-base font-medium"
