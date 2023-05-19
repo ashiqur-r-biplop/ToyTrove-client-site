@@ -9,11 +9,14 @@ import { element } from "prop-types";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Details from "../Component/Details/Details";
 import MyToy from "../Component/MyToy/MyToy";
+import Update from "../Component/Update/Update";
+import ErrorPage from "../Component/ErrorPage/ErrorPage";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Main></Main>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
@@ -64,6 +67,14 @@ const router = createBrowserRouter([
         ),
         loader: ({ params }) =>
           fetch(`http://localhost:5000/details/${params.id}`),
+      },
+      {
+        path: "/update/:id",
+        element: (
+          <PrivateRoute>
+            <Update></Update>
+          </PrivateRoute>
+        ),
       },
     ],
   },

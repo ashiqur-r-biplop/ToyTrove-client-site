@@ -15,8 +15,6 @@ const Category = () => {
   const [tabsData, setTabsData] = useState([]);
   const { user } = useContext(AuthContext);
   const navigate = useNavigate();
-  // const location = useLocation()
-  // console.log(location);
   const handleTabs = (title) => {
     setTabCategory(title);
   };

@@ -1,30 +1,29 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useContext, useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../AuthProvide/AuthProvider";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faArrowUpRightFromSquare,
+  faCross,
+  faMultiply,
+} from "@fortawesome/free-solid-svg-icons";
 
 const MyToy = () => {
   const navigate = useNavigate();
+  const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
 
-  const handleViewDetails = (id) => {
-    Swal.fire({
-      title: "Do you really want to read this page?",
-      text: "Confirm now !!!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#32c770",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        navigate(`/details/${id}`);
-      }
-    });
-  };
+  useEffect(() => {
+    fetch(`http://localhost:5000/myToy?email=${user?.email}`)
+      .then((res) => res.json())
+      .then((data) => setToys(data));
+  }, []);
+  // console.log(toys);
   return (
     <div>
       <>
-        {toys.length === 0 ? (
+        {toys.length === 0 && (
           <div className="md:mt-28 mt-5 container mx-auto">
             <div className="h-[80vh] flex justify-start items-center">
               <h1
@@ -34,68 +33,66 @@ const MyToy = () => {
                 {" "}
                 You haven't added any toys yet.{" "}
                 <span className="text-[#32c770]">
-                  If you want to see your own toys, add a toy by going to the Add
-                  a Toy page
+                  If you want to see your own toys, add a toy by going to the
+                  Add a Toy page
                 </span>
               </h1>
             </div>
           </div>
-        ) : (
+        )}
+        {toys.length > 0 && (
           <div className="md:mt-28 mt-5 container mx-auto">
             <div className="text-center my-5">
-              <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
-                All <span className="text-[#32c770]">Toys</span>
-              </h1>
-            </div>
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-x border border-bottom divide-gray-200">
-                <thead>
-                  <tr>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-[#32c770] uppercase tracking-wider">
-                      Seller
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-[#32c770] uppercase tracking-wider">
-                      Toy Name
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-[#32c770] uppercase tracking-wider">
-                      Sub-category
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-[#32c770] uppercase tracking-wider">
-                      Price
-                    </th>
-                    <th className="px-6 py-3 text-left text-xs font-medium text-[#32c770] uppercase tracking-wider">
-                      Available Quantity
-                    </th>
-                    <th className="px-6 py-3"></th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {toys?.map((toy, index) => (
-                    <tr key={index}>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {toy?.sellerName}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {toy?.toyName}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        {toy?.category}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        ${toy?.price}
-                      </td>
-                      <td className="px-16 py-4 whitespace-nowrap ">
-                        {toy?.quantity}
-                      </td>
-                      <td className="px-6 py-4 whitespace-nowrap">
-                        <button onClick={() => handleViewDetails(toy?._id)}>
-                          View Details
-                        </button>
-                      </td>
-                    </tr>
+              <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 md:mt-20 mb-12">
+                My <span className="text-[#32c770]">Toys</span>
+                <div
+                  className={
+                    "mt-6 grid grid-cols-1 justify-center my-auto lg:grid-cols-2 mx-auto"
+                  }
+                >
+                  {toys?.map((toy) => (
+                    <div className="relative m-2">
+                      <div className="card md:flex md:flex-row bg-base-100 shadow-xl">
+                        <div className="md:w-1/2 w-full">
+                          <img
+                            src={toy?.photoUrl}
+                            className="w-full h-full"
+                            alt="Album"
+                          />
+                        </div>
+                        <div className="lg:w-1/2 w-full p-2 md:flex md:flex-col md:justify-center md:items-stat">
+                          <h2 className="card-title">Name : {toy?.toyName}</h2>
+                          <p className="text-xl text-start">
+                            price: {toy?.price}
+                          </p>
+                          <p className="text-xl text-start">
+                            quantity: {toy?.quantity}
+                          </p>
+                          <p className="text-xl text-start">
+                            category: {toy?.category}
+                          </p>
+                          <p className="text-xl text-start">
+                            rating: {toy?.rating}
+                          </p>
+                          <p className="text-sm text-start">
+                            Description : {toy?.description}
+                          </p>
+                          <div className="card-actions justify-start">
+                            <Link to={`/update/${toy?._id}`}>
+                              <button className="text-sm bg-[#32c770] px-3 py-3 rounded-sm">
+                                Update
+                              </button>
+                            </Link>
+                          </div>
+                        </div>
+                      </div>
+                      <div  className="absolute top-0 right-0">
+                        <FontAwesomeIcon style={{color:"red" , cursor:"pointer"}} icon={faMultiply}></FontAwesomeIcon>
+                      </div>
+                    </div>
                   ))}
-                </tbody>
-              </table>
+                </div>
+              </h1>
             </div>
           </div>
         )}
