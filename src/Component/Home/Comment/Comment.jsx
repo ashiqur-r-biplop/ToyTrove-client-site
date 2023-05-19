@@ -14,7 +14,7 @@ const Comment = () => {
   };
 
   const handleCheck = (e) => {
-    setCheck(e.target.checked);
+    setCheck(e?.target?.checked);
   };
 
   const handleComment = (e) => {
@@ -90,14 +90,14 @@ const Comment = () => {
               style={{ borderRadius: "5px" }}
               className="w-full md:w-3/4"
               type="text"
-              value={user?.displayName}
+              defaultValue={user?.displayName}
               name="name"
               placeholder="Your Name"
               required
             />
             <input
               style={{ borderRadius: "5px" }}
-              value={user?.email}
+              defaultValue={user?.email}
               className="w-full md:w-3/4"
               name="email"
               type="Email"

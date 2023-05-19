@@ -105,7 +105,7 @@ const Navbar = () => {
                             title={`${
                               user?.displayName ? user?.displayName : ""
                             }`}
-                            className="hidden lg:block"
+                            className="hidden md:block"
                             src={user?.photoURL}
                             alt=""
                           />
@@ -175,6 +175,36 @@ const Navbar = () => {
           id="mobile-menu"
         >
           <div className="px-2 pt-2 pb-3 space-y-1">
+            {user?.photoURL && (
+              <>
+                <div className="dropdown dropdown-end">
+                  <label
+                    tabIndex={0}
+                    className="btn btn-ghost btn-circle avatar"
+                  >
+                    <div className="w-10 rounded-full">
+                      <img
+                        title={`${user?.displayName ? user?.displayName : ""}`}
+                        className=""
+                        src={user?.photoURL}
+                        alt=""
+                      />
+                    </div>
+                  </label>
+                  <ul
+                    tabIndex={0}
+                    className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
+                  >
+                    <li>
+                      <Link to="/profile" className="justify-between">
+                        Profile
+                        <span className="badge">New</span>
+                      </Link>
+                    </li>
+                  </ul>
+                </div>
+              </>
+            )}
             <Link
               to="/"
               className="text-[#fff] hover:bg-[#32c770] hover:text-white block px-3 py-2 rounded-md text-base font-medium"
@@ -205,11 +235,21 @@ const Navbar = () => {
             >
               Blogs
             </Link>
-            <Link to="/login">
-              <button className="btn mt-2 bg-[#32c770] hover:bg-[#32c770] border-none">
-                Login
+
+            {user ? (
+              <button
+                onClick={handleLogout}
+                className="btn bg-[#32c770] hover:bg-[#32c770] border-none"
+              >
+                LogOut
               </button>
-            </Link>
+            ) : (
+              <Link to="/login">
+                <button className="btn bg-[#32c770] hover:bg-[#32c770] border-none">
+                  Login
+                </button>
+              </Link>
+            )}
           </div>
         </div>
       </div>

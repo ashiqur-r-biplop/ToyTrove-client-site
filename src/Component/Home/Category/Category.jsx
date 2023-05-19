@@ -1,6 +1,5 @@
 import Aos from "aos";
 import React, { useEffect, useState } from "react";
-import { FaStar } from "react-icons/fa";
 import Rating from "react-rating";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
