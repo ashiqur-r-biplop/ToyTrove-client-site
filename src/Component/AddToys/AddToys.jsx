@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { AuthContext } from "../../AuthProvide/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddToys = () => {
   const [ratings, setRatings] = useState(0);
@@ -44,7 +45,18 @@ const AddToys = () => {
       body: JSON.stringify(myToy),
     })
       .then((res) => res.json())
-      .then((result) => console.log(result));
+      .then((result) => {
+        if (result?.insertedId) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Add A Toy SuccessFull",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          form.reset()
+        }
+      });
   };
 
   return (

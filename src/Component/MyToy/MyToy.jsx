@@ -51,8 +51,8 @@ const MyToy = () => {
                   }
                 >
                   {toys?.map((toy) => (
-                    <div className="relative m-2">
-                      <div className="card md:flex md:flex-row bg-base-100 shadow-xl">
+                    <div key={toy?._id} className="relative m-2">
+                      <div className="card p-4 md:p-0 md:flex md:flex-row bg-base-100 shadow-xl">
                         <div className="md:w-1/2 w-full">
                           <img
                             src={toy?.photoUrl}
@@ -60,10 +60,10 @@ const MyToy = () => {
                             alt="Album"
                           />
                         </div>
-                        <div className="lg:w-1/2 w-full p-2 md:flex md:flex-col md:justify-center md:items-stat">
+                        <div className="lg:w-1/2 w-full p-2 md:flex md:flex-col md:justify-center md:items-stat space-y-2">
                           <h2 className="card-title">Name : {toy?.toyName}</h2>
                           <p className="text-xl text-start">
-                            price: {toy?.price}
+                            price: ${toy?.price}
                           </p>
                           <p className="text-xl text-start">
                             quantity: {toy?.quantity}
@@ -79,15 +79,15 @@ const MyToy = () => {
                           </p>
                           <div className="card-actions justify-start">
                             <Link to={`/update/${toy?._id}`}>
-                              <button className="text-sm bg-[#32c770] px-3 py-3 rounded-sm">
+                              <button className="text-sm bg-[#32c770] px-3 py-3 rounded-sm text-white">
                                 Update
                               </button>
                             </Link>
                           </div>
                         </div>
                       </div>
-                      <div  className="absolute top-0 right-0">
-                        <FontAwesomeIcon style={{color:"red" , cursor:"pointer"}} icon={faMultiply}></FontAwesomeIcon>
+                      <div  className="absolute -top-4 shadow-lg px-2 rounded-full right-0" >
+                        <FontAwesomeIcon className="w-full" style={{color:"red" , cursor:"pointer" }} icon={faMultiply}></FontAwesomeIcon>
                       </div>
                     </div>
                   ))}

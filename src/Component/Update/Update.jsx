@@ -1,13 +1,15 @@
 import React, { useContext, useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../AuthProvide/AuthProvider";
 
 import DataNotAvailable from "../DataNotAvailable/DataNotAvailable";
+import Swal from "sweetalert2";
 
 const Update = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState({});
   const { id } = useParams();
+  const navigate = useNavigate()
   const [categories, setCategories] = useState("");
   const handleCategory = (e) => {
     setCategories(e.target.value);
@@ -43,19 +45,39 @@ const Update = () => {
       quantity,
       description,
     };
-    fetch(`http://localhost:5000/update/${id}`, {
-      method: "PATCH",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(myToy),
-    })
-      .then((res) => res.json())
-      .then((result) => console.log(result));
+
+    if (user) {
+      Swal.fire({
+        title: "Are you sure Update This toy?",
+        text: "Please confirm !!!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#32c770",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Confirm",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          fetch(`http://localhost:5000/update/${id}`, {
+            method: "PATCH",
+            headers: {
+              "content-type": "application/json",
+            },
+            body: JSON.stringify(myToy),
+          })
+            .then((res) => res.json())
+            .then((result) => {
+              if (result?.modifiedCount) {
+                form.reset()
+                navigate('/myToys')
+              }
+            });
+        }
+      });
+    }
   };
 
-  if(!toys){
-    return <DataNotAvailable></DataNotAvailable>
+  if (!toys) {
+    return <DataNotAvailable></DataNotAvailable>;
   }
   return (
     <div className="md:mt-28 mt-5 container mx-auto">
