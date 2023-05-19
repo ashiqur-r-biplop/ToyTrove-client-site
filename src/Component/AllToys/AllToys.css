@@ -6,3 +6,6 @@ input:focus{
     outline: none;
     border: 2px solid #32c770;
 }
+.swal2-cancel{
+    background-color: red !important;
+}

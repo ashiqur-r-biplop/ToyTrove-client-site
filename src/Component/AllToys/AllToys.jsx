@@ -26,7 +26,7 @@ const AllToys = () => {
   const handleViewDetails = (id) => {
     Swal.fire({
       title: "Do you really want to read this page?",
-      text: "Confirm now",
+      text: "Confirm now !!!",
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#32c770",
@@ -96,7 +96,7 @@ const AllToys = () => {
                     {toy.category}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">${toy.price}</td>
-                  <td className="px-6 py-4 whitespace-nowrap">
+                  <td className="px-16 py-4 whitespace-nowrap ">
                     {toy.quantity}
                   </td>
                   <td className="px-6 py-4 whitespace-nowrap">

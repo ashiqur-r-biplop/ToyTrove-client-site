@@ -28,7 +28,7 @@ const Category = () => {
     if (!user) {
       Swal.fire({
         title: "Please First login And then go View Details page",
-        text: "Please Login",
+        text: "Please Login !!!",
         icon: "warning",
         showCancelButton: true,
         confirmButtonColor: "#32c770",
