@@ -7,6 +7,7 @@ import "aos/dist/aos.css";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvide/AuthProvider";
 import Swal from "sweetalert2";
+import './Category.css'
 
 const Category = () => {
   const [tabCategory, setTabCategory] = useState("Teddy");

@@ -19,7 +19,15 @@ input:focus {
     color: #32c770;
 
 }
-
+.swal2-styled{
+    background-color: #32c770 !important;
+}
+.swal2-x-mark-line-left, .swal2-x-mark-line-right {
+    background-color: #32c770 !important;
+}
+.swal2-icon.swal2-error {
+    border-color: #32c770 !important;
+}
 .toggle-icon {
     cursor: pointer;
 }
