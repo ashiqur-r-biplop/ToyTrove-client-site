@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../../AuthProvide/AuthProvider";
 import Swal from "sweetalert2";
 import "./Category.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Category = () => {
   const [tabCategory, setTabCategory] = useState("Teddy");
@@ -18,7 +20,9 @@ const Category = () => {
     setTabCategory(title);
   };
   useEffect(() => {
-    fetch(`https://toy-trove-server-site.vercel.app/toys?category=${tabCategory}`)
+    fetch(
+      `https://toy-trove-server-site.vercel.app/toys?category=${tabCategory}`
+    )
       .then((res) => res.json())
       .then((data) => setTabsData(data));
     Aos.init();
@@ -67,13 +71,16 @@ const Category = () => {
                     key={i}
                     data-aos="fade-down"
                   >
-                    <figure>
-                      <img
-                        style={{ height: "250px", width: "100%" }}
-                        src={data?.photoUrl}
-                        alt={data?.toyName}
-                      />
-                    </figure>
+                    <LazyLoadImage
+                      style={{ height: "250px", width: "100%" }}
+                      src={data?.photoUrl}
+                      className="card-img-top"
+                      loading="lazy"
+                      effect="blur"
+                      alt={data?.toyName}
+                      placeholderSrc={data?.photoUrl.blurhash}
+                    />
+
                     <div className="card-body relative">
                       <h2 className="card-title absolute -top-10 bg-white px-3 py-2 shadow ">
                         Name: {data?.toyName}

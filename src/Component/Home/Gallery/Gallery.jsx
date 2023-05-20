@@ -7,6 +7,8 @@ import img4 from "../../../assets/Image/galleryImg/gallery-4.jpg";
 import img5 from "../../../assets/Image/galleryImg/gallery-5.jpg";
 import Aos from "aos";
 import "aos/dist/aos.css";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import { LazyLoadImage } from "react-lazy-load-image-component";
 
 const Gallery = () => {
   useEffect(() => {
@@ -20,13 +22,34 @@ const Gallery = () => {
       <div>
         <div className="grid lg:grid-cols-3 grid-cols-1 mx-auto">
           <div data-aos="fade-down">
-            <img className="lg:w-2/3 mx-auto m-3 mb-3" src={img1} alt="" />
+            <LazyLoadImage
+              src={img1}
+              className="lg:w-2/3 mx-auto m-3 mb-3"
+              loading="lazy"
+              effect="blur"
+              alt=""
+              placeholderSrc={img1.blurhash}
+            />
           </div>
           <div data-aos="fade-down">
-            <img className="lg:w-2/3 mx-auto m-3 mb-3" src={img4} alt="" />
+            <LazyLoadImage
+              src={img4}
+              className="lg:w-2/3 mx-auto m-3 mb-3"
+              loading="lazy"
+              effect="blur"
+              alt=""
+              placeholderSrc={img4.blurhash}
+            />
           </div>
           <div data-aos="fade-down">
-            <img className="lg:w-2/3 mx-auto m-3 mb-3" src={img5} alt="" />
+            <LazyLoadImage
+              src={img5}
+              className="lg:w-2/3 mx-auto m-3 mb-3"
+              loading="lazy"
+              effect="blur"
+              alt=""
+              placeholderSrc={img5.blurhash}
+            />
           </div>
         </div>
         <div

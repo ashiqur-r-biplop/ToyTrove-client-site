@@ -28,7 +28,7 @@ const Navbar = () => {
   return (
     <nav
       style={{ zIndex: "9999" }}
-      className="bg-[#32c770b9] py-2 md:fixed top-5 mx-auto w-full"
+      className="bg-[#32c770d8] py-2 md:fixed top-0 mx-auto w-full"
       data-aos="fade-up"
     >
       <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
