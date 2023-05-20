@@ -1,14 +1,27 @@
 import React from "react";
 import useTitle from "../CustomeHook/Hook";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
 
 const Blog = () => {
   useTitle("Blog");
+  const navigate = useNavigate();
   return (
     <div className="container mx-auto">
       <div className="md:mt-28 m-3">
         <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
           My <span className="text-[#32c770]">Blogs page</span>
         </h1>
+        <div className="text-center my-3">
+          <button
+            onClick={() => navigate(-1)}
+            className="bg-[#32c770] px-4 py-2 rounded-full text-white"
+          >
+            <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
+            <span className="ms-2">Back Now</span>
+          </button>
+        </div>
         <div>
           <div
             tabIndex={0}
@@ -125,7 +138,8 @@ const Blog = () => {
                 In MongoDB, the aggregate function is used to perform complex
                 data aggregation operations on collections. It allows you to
                 process and transform the data in various ways, such as
-                grouping, filtering, sorting, and computing aggregate values. <br />
+                grouping, filtering, sorting, and computing aggregate values.{" "}
+                <br />
                 <span className="font-semibold text-[#32c770] text-xl border-b-2 border-[#32c770] my-2">
                   Aggregate pipeline <br />
                 </span>

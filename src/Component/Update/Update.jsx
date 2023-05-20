@@ -5,6 +5,8 @@ import { AuthContext } from "../../AuthProvide/AuthProvider";
 import DataNotAvailable from "../DataNotAvailable/DataNotAvailable";
 import Swal from "sweetalert2";
 import useTitle from "../CustomeHook/Hook";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Update = () => {
   useTitle("Update");
@@ -100,6 +102,15 @@ const Update = () => {
         Update <span className="text-[#32c770]">Toys</span>
       </h1>
       <div className="">
+        <div className="text-center">
+          <button
+            onClick={() => navigate(-1)}
+            className="bg-[#32c770] px-4 py-2 rounded-full text-white"
+          >
+            <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
+            <span className="ms-2">Back Now</span>
+          </button>
+        </div>
         <form className="" onSubmit={handleMyToys}>
           <div className="card-body">
             <div className="md:flex justify-between w-full">

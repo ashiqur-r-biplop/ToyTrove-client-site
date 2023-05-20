@@ -1,21 +1,32 @@
 import React from "react";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 import Category from "../Home/Category/Category";
 import Rating from "react-rating";
 import { FaStar, FaStarHalf, FaStarHalfAlt } from "react-icons/fa";
 import useTitle from "../CustomeHook/Hook";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const Details = () => {
-  
   const SingleToy = useLoaderData();
+  const navigate = useNavigate();
   // console.log(SingleToy);
-  useTitle(`${SingleToy.toyName} Details`)
+  useTitle(`${SingleToy.toyName} Details`);
 
   return (
     <div className="container mx-auto md:mt-28 mt-5">
       <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 md:my-10 ">
         Category: <span className="text-[#32c770]">{SingleToy?.category}</span>
       </h1>
+      <div className="text-center">
+        <button
+          onClick={() => navigate(-1)}
+          className="bg-[#32c770] px-4 py-2 rounded-full text-white"
+        >
+          <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
+          <span className="ms-2">Back Now</span>
+        </button>
+      </div>
       <div className="hero lg:h-[70vh]">
         <div className="hero-content flex-col lg:flex-row lg:justify-center lg:items-center">
           <div className="lg:w-1/2 w-full">
