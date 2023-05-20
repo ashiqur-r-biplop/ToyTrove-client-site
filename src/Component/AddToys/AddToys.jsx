@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 import useTitle from "../CustomeHook/Hook";
 
 const AddToys = () => {
-  useTitle('AddToys')
+  useTitle("AddToys");
   const [ratings, setRatings] = useState(0);
   const { user } = useContext(AuthContext);
   const [categories, setCategories] = useState("Teddy bear");
@@ -39,27 +39,40 @@ const AddToys = () => {
       description,
     };
     console.log(myToy);
-    fetch("http://localhost:5000/allToys", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(myToy),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result?.insertedId) {
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Add A Toy SuccessFull",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          form.reset()
-        }
-      });
-  };
+    if (user?.email === sellerEmail) {
+      fetch("http://localhost:5000/allToys", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(myToy),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result?.insertedId) {
+            Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: "Add A Toy SuccessFull",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            form.reset();
+          }
+        });
+    } else {
+      Swal.fire({
+        icon: 'error',
+        buttonsStyling:{
+          color: "#32c770",
+          backgroundColor: "#32c770"
+        },
+        title: 'Oops...',
+        title: `You Email is not valid`,
+        footer: 'Please Provide Me User Email'
+      })
+  }
+}
 
   return (
     <div className="md:mt-28 mt-5 container mx-auto">
@@ -77,7 +90,7 @@ const AddToys = () => {
                   </label>
                   <input
                     name="sellerName"
-                    value={user?.displayName}
+                    defaultValue={user?.displayName}
                     type="text"
                     placeholder="Seller Name"
                     className="input w-full input-bordered"
@@ -90,7 +103,7 @@ const AddToys = () => {
                   </label>
                   <input
                     type="email"
-                    value={user?.email}
+                    defaultValue={user?.email}
                     placeholder="Please Provide Login Email"
                     name="email"
                     className="input input-bordered w-full"

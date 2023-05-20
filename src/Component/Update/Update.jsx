@@ -7,11 +7,11 @@ import Swal from "sweetalert2";
 import useTitle from "../CustomeHook/Hook";
 
 const Update = () => {
-  useTitle('Update')
+  useTitle("Update");
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState({});
   const { id } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const [categories, setCategories] = useState("");
   const handleCategory = (e) => {
     setCategories(e.target.value);
@@ -59,20 +59,33 @@ const Update = () => {
         confirmButtonText: "Confirm",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/update/${id}`, {
-            method: "PATCH",
-            headers: {
-              "content-type": "application/json",
-            },
-            body: JSON.stringify(myToy),
-          })
-            .then((res) => res.json())
-            .then((result) => {
-              if (result?.modifiedCount) {
-                form.reset()
-                navigate('/myToys')
-              }
+          if (user?.email === sellerEmail) {
+            fetch(`http://localhost:5000/update/${id}`, {
+              method: "PATCH",
+              headers: {
+                "content-type": "application/json",
+              },
+              body: JSON.stringify(myToy),
+            })
+              .then((res) => res.json())
+              .then((result) => {
+                if (result?.modifiedCount) {
+                  form.reset();
+                  navigate("/myToys");
+                }
+              });
+          } else {
+            Swal.fire({
+              icon: "error",
+              buttonsStyling: {
+                color: "#32c770",
+                backgroundColor: "#32c770",
+              },
+              title: "Oops...",
+              title: `You Email is not valid`,
+              footer: "Please Provide Me User Email",
             });
+          }
         }
       });
     }
@@ -97,7 +110,7 @@ const Update = () => {
                   </label>
                   <input
                     name="sellerName"
-                    value={user?.displayName}
+                    defaultValue={user?.displayName}
                     type="text"
                     placeholder="Seller Name"
                     className="input w-full input-bordered"
@@ -110,7 +123,7 @@ const Update = () => {
                   </label>
                   <input
                     type="email"
-                    value={user?.email}
+                    defaultValue={user?.email}
                     placeholder="Please Provide Login Email"
                     name="email"
                     className="input input-bordered w-full"
