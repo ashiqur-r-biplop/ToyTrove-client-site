@@ -8,8 +8,10 @@ import { faEye, faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import { GithubAuthProvider, GoogleAuthProvider, sendPasswordResetEmail } from "firebase/auth";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvide/AuthProvider";
+import useTitle from "../CustomeHook/Hook";
 
 const Login = () => {
+  useTitle('Login')
   const { login, signInGoogle, signInGithub, auth } = useContext(AuthContext);
   const [toggleIcon, setToggleIcon] = useState(false);
   const [errorMassage, setErrorMassage] = useState("");
@@ -21,6 +23,7 @@ const Login = () => {
   const from = location.state?.from?.pathname || "/";
 
   const handleLogin = (e) => {
+    
     e.preventDefault();
     const form = e.target;
     const emailField = form.email.value;

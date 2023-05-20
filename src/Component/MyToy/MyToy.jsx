@@ -2,13 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../AuthProvide/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../CustomeHook/Hook";
 
 const MyToy = () => {
+  useTitle('My Toy')
   const navigate = useNavigate();
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const [control, setControl] = useState(false);
-
+  const [activeTab, setActiveTab] = useState("Ascending");
   useEffect(() => {
     fetch(`http://localhost:5000/myToy?email=${user?.email}`)
       .then((res) => res.json())
@@ -40,6 +42,10 @@ const MyToy = () => {
       });
     }
   };
+  const handleTabClick = (tabName) => {
+    setActiveTab(tabName);
+    
+  };
   return (
     <div>
       <>
@@ -62,6 +68,24 @@ const MyToy = () => {
         )}
         {toys.length > 0 && (
           <div className="md:mt-28 mt-5 container mx-auto">
+            <div className="lg:flex lg:justify-between lg:w-1/6 w-full text-center lg:mx-auto mx-2  items-center ">
+              <button
+                onClick={() => handleTabClick("Ascending")}
+                className={`Ascending ${
+                  activeTab == "Ascending" ? " bg-[#32c770] px-4 py-3 text-white mx-2" : ""
+                }`}
+              >
+                Ascending
+              </button>
+              <button
+                onClick={() => handleTabClick("Descending")}
+                className={`Descending ${
+                  activeTab == "Descending" ? " bg-[#32c770] px-4 py-3 text-white mx-2" : ""
+                }`}
+              >
+                Descending
+              </button>
+            </div>
             <div className="text-center my-5">
               <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 md:mt-20 mb-12">
                 My <span className="text-[#32c770]">Toys</span>

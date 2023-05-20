@@ -4,8 +4,10 @@ import { AuthContext } from "../../AuthProvide/AuthProvider";
 
 import DataNotAvailable from "../DataNotAvailable/DataNotAvailable";
 import Swal from "sweetalert2";
+import useTitle from "../CustomeHook/Hook";
 
 const Update = () => {
+  useTitle('Update')
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState({});
   const { id } = useParams();

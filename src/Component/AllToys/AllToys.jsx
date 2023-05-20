@@ -6,8 +6,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 import { AuthContext } from "../../AuthProvide/AuthProvider";
 import Spinner from "../Spinner/Spinner";
+import useTitle from "../CustomeHook/Hook";
 
 const AllToys = () => {
+  useTitle("AllToys")
   const [toys, setToys] = useState([]);
   const [search, setSearch] = useState("");
   const { loading } = useContext(AuthContext);

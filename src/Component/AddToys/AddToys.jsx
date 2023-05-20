@@ -2,8 +2,10 @@ import React, { useContext, useState } from "react";
 import ReactStars from "react-rating-stars-component";
 import { AuthContext } from "../../AuthProvide/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../CustomeHook/Hook";
 
 const AddToys = () => {
+  useTitle('AddToys')
   const [ratings, setRatings] = useState(0);
   const { user } = useContext(AuthContext);
   const [categories, setCategories] = useState("Teddy bear");

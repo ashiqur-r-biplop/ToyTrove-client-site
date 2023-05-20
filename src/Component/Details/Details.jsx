@@ -3,10 +3,13 @@ import { useLoaderData } from "react-router-dom";
 import Category from "../Home/Category/Category";
 import Rating from "react-rating";
 import { FaStar, FaStarHalf, FaStarHalfAlt } from "react-icons/fa";
+import useTitle from "../CustomeHook/Hook";
 
 const Details = () => {
+  
   const SingleToy = useLoaderData();
   console.log(SingleToy);
+  useTitle(`${SingleToy.toyName} Details`)
   return (
     <div className="container mx-auto md:mt-28 mt-5">
       <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 md:my-10 ">

@@ -8,7 +8,9 @@ import gitHubImg from "../../assets/Image/social/github.png";
 import { GithubAuthProvider, GoogleAuthProvider } from "firebase/auth";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../AuthProvide/AuthProvider";
+import useTitle from "../CustomeHook/Hook";
 const Register = () => {
+  useTitle('Register')
   const [toggleIcon, setToggleIcon] = useState(false);
   const [errorMassage, setErrorMassage] = useState("");
   const [successMessage , setSuccessMessage]= useState("")
