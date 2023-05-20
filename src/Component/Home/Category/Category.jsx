@@ -18,7 +18,7 @@ const Category = () => {
     setTabCategory(title);
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/toys?category=${tabCategory}`)
+    fetch(`https://toy-trove-server-site.vercel.app/toys?category=${tabCategory}`)
       .then((res) => res.json())
       .then((data) => setTabsData(data));
     Aos.init();

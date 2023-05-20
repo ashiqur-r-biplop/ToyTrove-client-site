@@ -19,7 +19,7 @@ const Update = () => {
     setCategories(e.target.value);
   };
   useEffect(() => {
-    fetch(`http://localhost:5000/AllData`)
+    fetch(`https://toy-trove-server-site.vercel.app/AllData`)
       .then((res) => res.json())
       .then((datas) => {
         const singleToy = datas.find((data) => data?._id === id);
@@ -62,7 +62,7 @@ const Update = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           if (user?.email === sellerEmail) {
-            fetch(`http://localhost:5000/update/${id}`, {
+            fetch(`https://toy-trove-server-site.vercel.app/update/${id}`, {
               method: "PATCH",
               headers: {
                 "content-type": "application/json",

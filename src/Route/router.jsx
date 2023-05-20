@@ -67,7 +67,7 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/details/${params.id}`),
+          fetch(`https://toy-trove-server-site.vercel.app/details/${params.id}`),
       },
       {
         path: "/update/:id",

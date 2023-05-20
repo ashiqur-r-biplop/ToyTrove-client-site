@@ -15,7 +15,7 @@ const AllToys = () => {
   const { loading } = useContext(AuthContext);
   const navigate = useNavigate();
   useEffect(() => {
-    fetch("http://localhost:5000/allToys")
+    fetch("https://toy-trove-server-site.vercel.app/allToys")
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, []);
@@ -28,7 +28,7 @@ const AllToys = () => {
     // .then((res) => res.json())
     // .then((data) => setToys(data));
     const loaded = async () => {
-      const res = await fetch(`http://localhost:5000/allToys/${search}`);
+      const res = await fetch(`https://toy-trove-server-site.vercel.app/allToys/${search}`);
       const data = await res.json();
       setToys(data)
     };

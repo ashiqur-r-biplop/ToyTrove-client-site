@@ -28,7 +28,7 @@ const Comment = () => {
     const ratings = rating;
     const ourComment = { name, email, comments: comment, ratings, checked };
 
-    fetch("http://localhost:5000/comment", {
+    fetch("https://toy-trove-server-site.vercel.app/comment", {
       method: "POST",
       headers: {
         "content-type": "application/json",

@@ -9,8 +9,10 @@ const MyToy = () => {
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const [control, setControl] = useState(false);
+  const [controlColor, setControlColor] = useState("ascending");
+
   useEffect(() => {
-    fetch(`http://localhost:5000/myToy?email=${user?.email}`)
+    fetch(`https://toy-trove-server-site.vercel.app/myToy?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => setToys(data));
   }, [control]);
@@ -27,7 +29,7 @@ const MyToy = () => {
         confirmButtonText: "Confirm",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/delete/${id}`, {
+          fetch(`https://toy-trove-server-site.vercel.app/delete/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())
@@ -40,10 +42,21 @@ const MyToy = () => {
       });
     }
   };
-  const handleSort = () => {
-    fetch(`http://localhost:5000/sortMyToy?email=${user?.email}`)
-    .then(res => res.json())
-    .then(data => setToys(data))
+  const handleSortAscending = () => {
+    fetch(
+      `https://toy-trove-server-site.vercel.app/ascending?email=${user?.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setToys(data));
+    setControlColor("ascending");
+  };
+  const handleSortDescending = () => {
+    fetch(
+      `https://toy-trove-server-site.vercel.app/descending?email=${user?.email}`
+    )
+      .then((res) => res.json())
+      .then((data) => setToys(data));
+    setControlColor("descending");
   };
   return (
     <div>
@@ -73,10 +86,24 @@ const MyToy = () => {
               </h1>
               <div className="text-center">
                 <button
-                  onClick={handleSort}
-                  className="bg-[#32c770] px-5 text-white py-2 rounded-full "
+                  onClick={handleSortAscending}
+                  className={`${
+                    controlColor == "ascending"
+                      ? "bg-[#32c770] text-white"
+                      : "bg-[#fff] text-black"
+                  } px-5  py-2`}
                 >
-                  Sort
+                  Low To High
+                </button>
+                <button
+                  className={`${
+                    controlColor == "descending"
+                      ? "bg-[#32c770] text-white"
+                      : "bg-[#fff] text-black"
+                  } px-5  py-2`}
+                  onClick={handleSortDescending}
+                >
+                  High To Low
                 </button>
               </div>
               <div

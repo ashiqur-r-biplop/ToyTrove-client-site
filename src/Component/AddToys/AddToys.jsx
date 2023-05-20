@@ -40,7 +40,7 @@ const AddToys = () => {
     };
     // console.log(myToy);
     if (user?.email === sellerEmail) {
-      fetch("http://localhost:5000/allToys", {
+      fetch("https://toy-trove-server-site.vercel.app/allToys", {
         method: "POST",
         headers: {
           "content-type": "application/json",
