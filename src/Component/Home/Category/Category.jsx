@@ -36,7 +36,7 @@ const Category = () => {
         confirmButtonText: "Go to Login! ",
       }).then((result) => {
         if (result.isConfirmed) {
-          console.log(result.isConfirmed);
+          // console.log(result.isConfirmed);
           navigate(`/details/${id}`);
         }
       });

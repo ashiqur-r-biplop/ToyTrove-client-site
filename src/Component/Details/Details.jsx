@@ -8,7 +8,7 @@ import useTitle from "../CustomeHook/Hook";
 const Details = () => {
   
   const SingleToy = useLoaderData();
-  console.log(SingleToy);
+  // console.log(SingleToy);
   useTitle(`${SingleToy.toyName} Details`)
 
   return (

@@ -87,7 +87,7 @@ const Login = () => {
     signInGithub(githubProvider)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(object);
+        // console.log(object);
         navigate(from, { replace: true });
         Swal.fire({
           position: 'top-center',

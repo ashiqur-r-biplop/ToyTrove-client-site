@@ -38,7 +38,7 @@ const AddToys = () => {
       rating,
       description,
     };
-    console.log(myToy);
+    // console.log(myToy);
     if (user?.email === sellerEmail) {
       fetch("http://localhost:5000/allToys", {
         method: "POST",

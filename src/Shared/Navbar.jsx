@@ -7,7 +7,7 @@ import { AuthContext } from "../AuthProvide/AuthProvider";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { user, logout } = useContext(AuthContext);
-  console.log(user);
+  // console.log(user);
   const toggleNavbar = () => {
     setIsOpen(!isOpen);
   };
