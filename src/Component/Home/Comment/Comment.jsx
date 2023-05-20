@@ -101,6 +101,7 @@ const Comment = () => {
               className="w-full md:w-3/4"
               name="email"
               type="Email"
+              disabled
               placeholder="Your Email"
               required
             />

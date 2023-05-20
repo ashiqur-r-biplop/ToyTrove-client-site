@@ -90,7 +90,8 @@ const AddToys = () => {
                   </label>
                   <input
                     name="sellerName"
-                    defaultValue={user?.displayName}
+                    value={user?.displayName}
+                    disabled
                     type="text"
                     placeholder="Seller Name"
                     className="input w-full input-bordered"
@@ -103,7 +104,8 @@ const AddToys = () => {
                   </label>
                   <input
                     type="email"
-                    defaultValue={user?.email}
+                    value={user?.email}
+                    disabled
                     placeholder="Please Provide Login Email"
                     name="email"
                     className="input input-bordered w-full"

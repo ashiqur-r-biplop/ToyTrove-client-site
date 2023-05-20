@@ -12,7 +12,6 @@ const Details = () => {
   const navigate = useNavigate();
   // console.log(SingleToy);
   useTitle(`${SingleToy.toyName} Details`);
-
   return (
     <div className="container mx-auto md:mt-28 mt-5">
       <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 md:my-10 ">

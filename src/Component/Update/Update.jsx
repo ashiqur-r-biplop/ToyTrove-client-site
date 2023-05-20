@@ -93,9 +93,6 @@ const Update = () => {
     }
   };
 
-  if (!toys) {
-    return <DataNotAvailable></DataNotAvailable>;
-  }
   return (
     <div className="md:mt-28 mt-5 container mx-auto">
       <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
@@ -121,6 +118,7 @@ const Update = () => {
                   </label>
                   <input
                     name="sellerName"
+                    disabled
                     defaultValue={user?.displayName}
                     type="text"
                     placeholder="Seller Name"
@@ -134,6 +132,7 @@ const Update = () => {
                   </label>
                   <input
                     type="email"
+                    disabled
                     defaultValue={user?.email}
                     placeholder="Please Provide Login Email"
                     name="email"
