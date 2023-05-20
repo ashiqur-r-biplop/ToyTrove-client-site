@@ -11,6 +11,7 @@ import Details from "../Component/Details/Details";
 import MyToy from "../Component/MyToy/MyToy";
 import Update from "../Component/Update/Update";
 import ErrorPage from "../Component/ErrorPage/ErrorPage";
+import Blog from "../Component/Blog/Blog";
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,7 @@ const router = createBrowserRouter([
       },
       {
         path: "/blogs",
-        element: <h1>blogs pages</h1>,
+        element: <Blog></Blog>,
       },
       {
         path: "/login",

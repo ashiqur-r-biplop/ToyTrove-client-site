@@ -5,12 +5,10 @@ import Swal from "sweetalert2";
 import useTitle from "../CustomeHook/Hook";
 
 const MyToy = () => {
-  useTitle('My Toy')
-  const navigate = useNavigate();
+  useTitle("My Toy");
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
   const [control, setControl] = useState(false);
-  const [activeTab, setActiveTab] = useState("Ascending");
   useEffect(() => {
     fetch(`http://localhost:5000/myToy?email=${user?.email}`)
       .then((res) => res.json())
@@ -42,9 +40,10 @@ const MyToy = () => {
       });
     }
   };
-  const handleTabClick = (tabName) => {
-    setActiveTab(tabName);
-    
+  const handleSort = () => {
+    fetch(`http://localhost:5000/sortMyToy?email=${user?.email}`)
+    .then(res => res.json())
+    .then(data => setToys(data))
   };
   return (
     <div>
@@ -68,81 +67,71 @@ const MyToy = () => {
         )}
         {toys.length > 0 && (
           <div className="md:mt-28 mt-5 container mx-auto">
-            <div className="lg:flex lg:justify-between lg:w-1/6 w-full text-center lg:mx-auto mx-2  items-center ">
-              <button
-                onClick={() => handleTabClick("Ascending")}
-                className={`Ascending ${
-                  activeTab == "Ascending" ? " bg-[#32c770] px-4 py-3 text-white mx-2" : ""
-                }`}
-              >
-                Ascending
-              </button>
-              <button
-                onClick={() => handleTabClick("Descending")}
-                className={`Descending ${
-                  activeTab == "Descending" ? " bg-[#32c770] px-4 py-3 text-white mx-2" : ""
-                }`}
-              >
-                Descending
-              </button>
-            </div>
             <div className="text-center my-5">
               <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 md:mt-20 mb-12">
-                My <span className="text-[#32c770]">Toys</span>
-                <div
-                  className={
-                    "mt-6 grid grid-cols-1 justify-center my-auto lg:grid-cols-2 mx-auto"
-                  }
+                My <span className="text-[#32c770]">Toys</span>{" "}
+              </h1>
+              <div className="text-center">
+                <button
+                  onClick={handleSort}
+                  className="bg-[#32c770] px-5 text-white py-2 rounded-full "
                 >
-                  {toys?.map((toy) => (
-                    <div key={toy?._id} className="relative m-2">
-                      <div className="card p-4 md:p-0 md:flex md:flex-row bg-base-100 shadow-xl">
-                        <div className="md:w-1/2 w-full">
-                          <img
-                            src={toy?.photoUrl}
-                            className="w-full h-full"
-                            alt={toy?.toyName}
-                          />
-                        </div>
-                        <div className="lg:w-1/2 w-full p-2 md:flex md:flex-col md:justify-center md:items-stat space-y-2">
-                          <h2 className="card-title">Name : {toy?.toyName}</h2>
-                          <p className="text-xl text-start">
-                            price: ${toy?.price}
-                          </p>
-                          <p className="text-xl text-start">
-                            quantity: {toy?.quantity}
-                          </p>
-                          <p className="text-xl text-start">
-                            category: {toy?.category}
-                          </p>
-                          <p className="text-xl text-start">
-                            rating: {toy?.rating}
-                          </p>
-                          <p className="text-sm text-start h-14">
-                            Description : {toy?.description.slice(0, 50)}...
-                          </p>
-                          <div className="space-y-2">
-                            <div>
-                              <Link to={`/update/${toy?._id}`}>
-                                <button className="text-sm w-full bg-[#32c770] px-3 py-3 rounded-sm text-white">
-                                  Update
-                                </button>
-                              </Link>
-                            </div>
-                            <div
-                              onClick={() => handleDelete(toy?._id)}
-                              style={{ cursor: "pointer" }}
-                              className="text-sm w-full bg-[#ff0000c0] px-3 py-3 rounded-sm text-white"
-                            >
-                              delete
-                            </div>
+                  Sort
+                </button>
+              </div>
+              <div
+                className={
+                  "mt-6 grid grid-cols-1 justify-center my-auto lg:grid-cols-2 mx-auto"
+                }
+              >
+                {toys?.map((toy) => (
+                  <div key={toy?._id} className="relative m-2">
+                    <div className="card p-4 md:p-0 md:flex md:flex-row bg-base-100 shadow-xl">
+                      <div className="md:w-1/2 w-full">
+                        <img
+                          src={toy?.photoUrl}
+                          className="w-full h-full"
+                          alt={toy?.toyName}
+                        />
+                      </div>
+                      <div className="lg:w-1/2 w-full p-2 md:flex md:flex-col md:justify-center md:items-stat space-y-2">
+                        <h2 className="card-title">Name : {toy?.toyName}</h2>
+                        <p className="text-xl text-start">
+                          price: ${toy?.price}
+                        </p>
+                        <p className="text-xl text-start">
+                          quantity: {toy?.quantity}
+                        </p>
+                        <p className="text-xl text-start">
+                          category: {toy?.category}
+                        </p>
+                        <p className="text-xl text-start">
+                          rating: {toy?.rating}
+                        </p>
+                        <p className="text-sm text-start h-14">
+                          Description : {toy?.description.slice(0, 50)}...
+                        </p>
+                        <div className="space-y-2">
+                          <div>
+                            <Link to={`/update/${toy?._id}`}>
+                              <button className="text-sm w-full bg-[#32c770] px-3 py-3 rounded-sm text-white">
+                                Update
+                              </button>
+                            </Link>
+                          </div>
+                          <div
+                            onClick={() => handleDelete(toy?._id)}
+                            style={{ cursor: "pointer" }}
+                            className="text-sm w-full bg-[#ff0000c0] px-3 py-3 rounded-sm text-white"
+                          >
+                            delete
                           </div>
                         </div>
                       </div>
                     </div>
-                  ))}
-                </div>
-              </h1>
+                  </div>
+                ))}
+              </div>
             </div>
           </div>
         )}

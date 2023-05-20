@@ -2,6 +2,8 @@ import React from "react";
 import { Link, useNavigate, useRouteError } from "react-router-dom";
 import "./ErrorPage.css";
 import errorImage from "../../assets/Image/error/error-image.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 
 const ErrorPage = () => {
   const { error } = useRouteError();
@@ -14,14 +16,15 @@ const ErrorPage = () => {
             <img className="w-full" src={errorImage} alt="" />
           </div>
           <div className="">
-            <p className="text-2xl font-semibold md:text-3xl text-[#910000] mb-8">
+            <p className="text-2xl font-semibold md:text-3xl text-[#32c770] mb-8">
               {error?.message}
             </p>
             <button
               onClick={() => navigate(-1)}
-              className="bg-[#32c770] px-4 py-3 rounded-full text-white"
+              className="bg-[#32c770] px-4 py-2 rounded-full text-white"
             >
-              Back to homepage
+              <FontAwesomeIcon icon={faArrowLeft}></FontAwesomeIcon>
+              <span className="ms-2">Back Now</span>
             </button>
           </div>
         </div>
