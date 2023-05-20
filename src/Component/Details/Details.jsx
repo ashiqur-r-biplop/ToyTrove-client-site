@@ -35,7 +35,7 @@ const Details = () => {
               className="w-[100%] rounded-lg shadow-2xl lg:h-[500px]"
             />
           </div>
-          <div className="lg:w-1/2 w-full mt-4 lg:mt-0 space-y-3">
+          <div className="lg:w-1/2 w-full lg:ms-28 mt-4 lg:mt-0 space-y-3">
             <h2 className="md:text-3xl text-2xl">
               <span className="font-semibold">Seller Name : </span>
               {SingleToy?.sellerName}.
@@ -53,7 +53,7 @@ const Details = () => {
               {SingleToy?.price}
             </p>
             <p className="md:text-3xl text-xl">
-              <span className="font-semibold">available quantity :</span>
+              <span className="font-semibold">Available quantity :</span>
               {SingleToy?.quantity}
             </p>
             <p className="md:text-3xl text-xl flex items-center">
@@ -67,11 +67,9 @@ const Details = () => {
                 readonly
               />
             </p>
-            <p className="text-xl">
-              <span className="font-semibold md:text-3xl text-xl">
-                Description :
-              </span>{" "}
-              {SingleToy?.description}
+            <p className="text-xl md:text-3xl">
+              <span className="font-semibold ">Description :</span>{" "}
+              <span>{SingleToy?.description}</span>
             </p>
           </div>
         </div>

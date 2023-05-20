@@ -101,7 +101,7 @@ const Category = () => {
                       <div className="card-actions">
                         <button
                           onClick={() => handleViewDetails(data?._id)}
-                          className="bg-[#32c770] text-[#fff] font-semibold px-3 py-2 rounded flex items-center uppercase"
+                          className="bg-[#13a95f] text-[#fff] font-semibold px-3 py-2 rounded flex items-center uppercase"
                         >
                           View Details
                         </button>

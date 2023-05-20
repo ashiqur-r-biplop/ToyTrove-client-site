@@ -24,7 +24,7 @@ const Gallery = () => {
           <div data-aos="fade-down">
             <LazyLoadImage
               src={img1}
-              className="lg:w-2/3 mx-auto m-3 mb-3"
+              className="lg:w-2/3 mx-auto m-3 mb-3 shadow-lg rounded-xl"
               loading="lazy"
               effect="blur"
               alt=""
@@ -34,7 +34,7 @@ const Gallery = () => {
           <div data-aos="fade-down">
             <LazyLoadImage
               src={img4}
-              className="lg:w-2/3 mx-auto m-3 mb-3"
+              className="lg:w-2/3 mx-auto m-3 mb-3 shadow-lg rounded-xl"
               loading="lazy"
               effect="blur"
               alt=""
@@ -44,7 +44,7 @@ const Gallery = () => {
           <div data-aos="fade-down">
             <LazyLoadImage
               src={img5}
-              className="lg:w-2/3 mx-auto m-3 mb-3"
+              className="lg:w-2/3 mx-auto m-3 mb-3 "
               loading="lazy"
               effect="blur"
               alt=""
@@ -56,8 +56,8 @@ const Gallery = () => {
           data-aos="fade-down"
           className="lg:flex lg:justify-center lg:items-center "
         >
-          <img className="lg:w-3/12 lg:m-5 mb-3 lg:mx-14" src={img3} alt="" />
-          <img className="lg:w-3/12 lg:m-5 mb-3 lg:mx-14" src={img2} alt="" />
+          <img className="lg:w-3/12 lg:m-5 mb-3 lg:mx-14 shadow-lg rounded-xl" src={img3} alt="" />
+          <img className="lg:w-3/12 lg:m-5 mb-3 lg:mx-14 shadow-lg rounded-xl" src={img2} alt="" />
         </div>
       </div>
     </div>

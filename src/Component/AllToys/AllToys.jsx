@@ -65,7 +65,7 @@ const AllToys = () => {
               type="text"
               placeholder="Search By Toy Name"
             />
-            <button className="bg-[#32c770] py-3 px-3 font-semibold text-white">
+            <button className="bg-[#32c770] py-3 px-3 md:px-16 font-semibold text-white">
               Search
             </button>
           </div>

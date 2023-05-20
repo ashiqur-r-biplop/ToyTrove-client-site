@@ -45,6 +45,7 @@ const Comment = () => {
             showConfirmButton: false,
             timer: 1500,
           });
+          form.reset()
         }
       });
   };
@@ -54,12 +55,12 @@ const Comment = () => {
         Our <span className="text-[#32c770]">Comments</span>
       </h1>
       <div className="m-3">
-        <h1 className="uppercase text-xl font-bold">Leave a Reply</h1>
-        <p className="text-lg">
+        <h1 className="uppercase md:text-3xl text-xl  font-bold">Leave a Reply</h1>
+        <p className="text-xl my-1">
           You email address will no be publish. Required fields are marked.
         </p>
-        <div className="flex items-center">
-          <span className="me-2">Retting </span>{" "}
+        <div className="flex items-center my-1">
+          <span className="me-2 text-2xl text-[#32c770] ">Rating </span>{" "}
           <ReactStars
             count={5}
             onChange={ratingChanged}
@@ -118,7 +119,7 @@ const Comment = () => {
           <button
             style={{ cursor: "pointer" }}
             type="submit"
-            className="bg-[#32c770] text-[#000000] px-4 py-3 md:px-10 md:text-center md:py-4 rounded-full font-semibold flex items-center uppercase"
+            className="bg-[#013855] text-[#fff] px-4 py-3 md:px-10 md:text-center md:py-4 rounded-full font-semibold flex items-center uppercase"
           >
             Comment
           </button>

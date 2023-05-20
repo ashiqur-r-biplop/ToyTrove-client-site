@@ -34,14 +34,14 @@ const Header = () => {
         </h1>
         <p className="md:w-2/4 text-white  leading-10  md:text-xl">
           Welcome to our enchanting world of play and imagination!{" "}
-          <span className="text-[#32c770] ">At ToyTrove</span>, we
+          <span className="text-[#32c770] font-bold">At ToyTrove</span> , we
           believe that childhood is a precious time filled with wonder and
           discovery. Our carefully curated collection of extraordinary toys is
           designed to spark joy, ignite imagination, and create unforgettable
           memories.
         </p>
         <div>
-          <button className=" bg-[#32c770] text-[#000000] px-4 py-3 md:px-10 md:py-4 rounded-full font-semibold flex items-center uppercase">
+          <button className=" bg-[#013855] text-[#fff] px-4 py-3 md:px-10 md:py-4 rounded-lg font-semibold flex items-center uppercase">
             <FaShoppingCart></FaShoppingCart>
             <span className="ms-2">Buy Now</span>
           </button>

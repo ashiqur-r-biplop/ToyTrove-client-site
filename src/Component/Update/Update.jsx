@@ -1,8 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../AuthProvide/AuthProvider";
-
-import DataNotAvailable from "../DataNotAvailable/DataNotAvailable";
 import Swal from "sweetalert2";
 import useTitle from "../CustomeHook/Hook";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";

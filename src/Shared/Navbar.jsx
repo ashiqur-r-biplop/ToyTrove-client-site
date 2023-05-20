@@ -28,17 +28,16 @@ const Navbar = () => {
   return (
     <nav
       style={{ zIndex: "9999" }}
-      className="bg-[#32c770d8] py-2 md:fixed top-0 mx-auto w-full"
+      className="bg-[#09542f] py-2 md:fixed top-0 mx-auto w-full"
       data-aos="fade-up"
     >
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 lg:px-8">
+      <div className="container mx-auto px-2 sm:px-6 lg:px-8">
         <div className="relative flex items-center justify-between h-16">
           <div className="flex items-center justify-start sm:justify-between w-full">
             <div className="flex-shrink-0">
               <Link to="/" className="text-white font-bold text-lg">
-                <div className="flex items-center justify-start w-full">
-                  <img src={logo} className="w-12" alt="" />
-                  <span>ToyTrove</span>
+                <div className="w-28 md:w-36">
+                  <img src={logo} className="w-full" alt="" />
                 </div>
               </Link>
             </div>
@@ -46,14 +45,14 @@ const Navbar = () => {
               <div className="flex items-center space-x-4">
                 <Link
                   to="/"
-                  className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-[#fff] hover:border-b hover:border-[#fff] hover:text-white px-3 py-2  text-lg "
                 >
                   Home
                 </Link>
 
                 <Link
                   to="/allToy"
-                  className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-[#fff] hover:border-b hover:border-[#fff] hover:text-white px-3 py-2  text-lg "
                 >
                   All Toys
                 </Link>
@@ -61,34 +60,34 @@ const Navbar = () => {
                   <>
                     <Link
                       to="/myToys"
-                      className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="text-[#fff] hover:border-b hover:border-[#fff] hover:text-white px-3 py-2  text-lg "
                     >
                       MyToys
                     </Link>
                     <Link
                       to="/addToy"
-                      className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                      className="text-[#fff] hover:border-b hover:border-[#fff] hover:text-white px-3 py-2  text-lg "
                     >
-                      add a Toy
+                      Add a Toy
                     </Link>
                   </>
                 )}
                 <Link
                   to="/blogs"
-                  className="text-[#fff] hover:bg-[#32c770] hover:text-white px-3 py-2 rounded-md text-sm font-medium"
+                  className="text-[#fff] hover:border-b hover:border-[#fff] hover:text-white px-3 py-2  text-lg "
                 >
                   Blogs
                 </Link>
                 {user ? (
                   <button
                     onClick={handleLogout}
-                    className="btn bg-[#32c770] hover:bg-[#32c770] border-none"
+                    className="py-3 px-10 text-white font-semibold rounded-lg bg-[#013855] hover:bg-[#013855] border-none"
                   >
                     LogOut
                   </button>
                 ) : (
                   <Link to="/login">
-                    <button className="btn bg-[#32c770] hover:bg-[#32c770] border-none">
+                    <button className="py-3 px-10 text-white font-semibold rounded-lg bg-[#013855] hover:bg-[#013855] border-none">
                       Login
                     </button>
                   </Link>
@@ -244,13 +243,13 @@ const Navbar = () => {
             {user ? (
               <button
                 onClick={handleLogout}
-                className="btn bg-[#32c770] hover:bg-[#32c770] border-none"
+                className="py-3 px-10 text-white font-semibold rounded-lg bg-[#013855] hover:bg-[#013855] border-none"
               >
                 LogOut
               </button>
             ) : (
               <Link to="/login">
-                <button className="btn bg-[#32c770] hover:bg-[#32c770] border-none">
+                <button className="py-3 px-10 text-white font-semibold rounded-lg bg-[#013855] hover:bg-[#013855] border-none">
                   Login
                 </button>
               </Link>
