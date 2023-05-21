@@ -22,7 +22,7 @@ const Profile = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    fetch(`http://localhost:5000/myComment?email=${user?.email}`)
+    fetch(`https://toy-trove-server-site.vercel.app/myComment?email=${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         setComment(data);
@@ -41,7 +41,7 @@ const Profile = () => {
         confirmButtonText: "Confirm",
       }).then((result) => {
         if (result.isConfirmed) {
-          fetch(`http://localhost:5000/commentDelete/${id}`, {
+          fetch(`https://toy-trove-server-site.vercel.app/commentDelete/${id}`, {
             method: "DELETE",
           })
             .then((res) => res.json())
