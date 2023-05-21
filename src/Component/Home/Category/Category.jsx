@@ -1,6 +1,6 @@
 import Aos from "aos";
 import React, { useContext, useEffect, useState } from "react";
-import Rating from "react-rating";
+// import Rating from "react-rating";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "aos/dist/aos.css";
@@ -10,6 +10,13 @@ import Swal from "sweetalert2";
 import "./Category.css";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import "@smastrom/react-rating/style.css";
+import { Rating, Star } from "@smastrom/react-rating";
+const myStyles = {
+  itemShapes: Star,
+  activeFillColor: "#32c770",
+  inactiveFillColor: "#d8d8d8",
+};
 
 const Category = () => {
   const [tabCategory, setTabCategory] = useState("Teddy");
@@ -86,17 +93,10 @@ const Category = () => {
                         Name: {data?.toyName}
                       </h2>
                       <p className="text-start">Price : ${data?.price}</p>
-                      <div className="flex items-center">
-                        <span className="mb-3">Ratings: </span>
-                        <Rating
-                          className="ms-2"
-                          initialRating={data?.rating}
-                          size={24}
-                          emptyIcon={<i className="far fa-star"></i>}
-                          halfIcon={<i className="fa fa-star-half-alt"></i>}
-                          fullIcon={<i className="fa fa-star"></i>}
-                          readonly
-                        />
+                      <div className="flex items-center ">
+                        <span className="">Ratings: </span>
+                        
+                        <Rating style={{ maxWidth: 100 }} className="ms-2" value={data?.rating} itemStyles={myStyles} readOnly />
                       </div>
                       <div className="card-actions">
                         <button

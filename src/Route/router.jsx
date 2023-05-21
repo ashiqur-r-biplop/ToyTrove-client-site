@@ -12,6 +12,7 @@ import MyToy from "../Component/MyToy/MyToy";
 import Update from "../Component/Update/Update";
 import ErrorPage from "../Component/ErrorPage/ErrorPage";
 import Blog from "../Component/Blog/Blog";
+import Profile from "../Component/Profile/Profile";
 
 const router = createBrowserRouter([
   {
@@ -53,11 +54,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/register",
-        element: <Register></Register>,
+        element: (
+          <PrivateRoute>
+            <Register></Register>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/profile",
-        element: <>this is my profile</>,
+        element: (
+          <PrivateRoute>
+            <Profile></Profile>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/details/:id",
@@ -67,7 +76,9 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`https://toy-trove-server-site.vercel.app/details/${params.id}`),
+          fetch(
+            `https://toy-trove-server-site.vercel.app/details/${params.id}`
+          ),
       },
       {
         path: "/update/:id",

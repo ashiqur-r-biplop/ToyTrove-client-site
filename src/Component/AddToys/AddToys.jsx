@@ -76,7 +76,7 @@ const AddToys = () => {
 
   return (
     <div className="md:mt-28 mt-5 container mx-auto">
-      <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
+      <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 md:mt-20 mb-12">
         Add <span className="text-[#32c770]">Toys</span>
       </h1>
       <div className="">

@@ -10,7 +10,7 @@ const Blog = () => {
   return (
     <div className="container mx-auto">
       <div className="md:mt-28 m-3">
-        <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 mt-20 mb-12">
+        <h1 className="text-center text-2xl md:text-4xl lg:text-5xl font-semibold my-5 md:mt-20 mb-12">
           My <span className="text-[#32c770]">Blogs page</span>
         </h1>
         <div className="text-center my-3">

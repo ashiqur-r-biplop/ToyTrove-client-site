@@ -177,7 +177,7 @@ const Navbar = () => {
           <div className="px-2 pt-2 pb-3 space-y-1">
             {user?.photoURL && (
               <>
-                <div className="dropdown dropdown-end">
+                <div className="dropdown dropdown-start">
                   <label
                     tabIndex={0}
                     className="btn btn-ghost btn-circle avatar"

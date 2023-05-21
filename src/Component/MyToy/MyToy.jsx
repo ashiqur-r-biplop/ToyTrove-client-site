@@ -4,6 +4,14 @@ import { AuthContext } from "../../AuthProvide/AuthProvider";
 import Swal from "sweetalert2";
 import useTitle from "../CustomeHook/Hook";
 
+import "@smastrom/react-rating/style.css";
+import { Rating, Star } from "@smastrom/react-rating";
+const myStyles = {
+  itemShapes: Star,
+  activeFillColor: "#32c770",
+  inactiveFillColor: "#d8d8d8",
+};
+
 const MyToy = () => {
   useTitle("My Toy");
   const { user } = useContext(AuthContext);
@@ -134,8 +142,16 @@ const MyToy = () => {
                           category: {toy?.category}
                         </p>
                         <p className="text-xl text-start">
-                          rating: {toy?.rating}
+                          rating:{" "}
+                          <Rating
+                            style={{ maxWidth: 100 }}
+                            className="ms-2"
+                            value={toy?.rating}
+                            itemStyles={myStyles}
+                            readOnly
+                          />
                         </p>
+
                         <p className="text-sm text-start h-14">
                           Description : {toy?.description.slice(0, 50)}...
                         </p>

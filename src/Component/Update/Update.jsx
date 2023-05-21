@@ -25,7 +25,7 @@ const Update = () => {
         setCategories(singleToy?.category);
       });
   }, []);
-  console.log(toys);
+  // console.log(toys);
   const handleMyToys = (e) => {
     e.preventDefault();
     const form = e.target;

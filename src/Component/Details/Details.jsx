@@ -1,11 +1,16 @@
 import React from "react";
 import { useLoaderData, useNavigate } from "react-router-dom";
-import Category from "../Home/Category/Category";
-import Rating from "react-rating";
-import { FaStar, FaStarHalf, FaStarHalfAlt } from "react-icons/fa";
 import useTitle from "../CustomeHook/Hook";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
+
+import "@smastrom/react-rating/style.css";
+import { Rating, Star } from "@smastrom/react-rating";
+const myStyles = {
+  itemShapes: Star,
+  activeFillColor: "#32c770",
+  inactiveFillColor: "#d8d8d8",
+};
 
 const Details = () => {
   const SingleToy = useLoaderData();
@@ -58,13 +63,13 @@ const Details = () => {
             </p>
             <p className="md:text-3xl text-xl flex items-center">
               <span className="font-semibold">Rating :</span>
+
               <Rating
-                className="mt-3"
-                placeholderRating={SingleToy?.rating}
-                emptyIcon={<i className="far fa-star"></i>}
-                halfIcon={<i className="fa fa-star-half-alt"></i>}
-                fullIcon={<i className="fa fa-star"></i>}
-                readonly
+                style={{ maxWidth: 100 }}
+                className="ms-2"
+                value={SingleToy?.rating}
+                itemStyles={myStyles}
+                readOnly
               />
             </p>
             <p className="text-xl md:text-3xl">
