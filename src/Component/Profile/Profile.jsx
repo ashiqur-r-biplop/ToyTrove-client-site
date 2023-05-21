@@ -62,7 +62,7 @@ const Profile = () => {
     }
   };
 
-  // console.log(comments);
+  console.log(comments);
   return (
     <div className="md:mt-28">
       <div className="container mx-auto my-5">
@@ -126,9 +126,9 @@ const Profile = () => {
                       </span>
                       {comment?.comments}
                     </p>
-                    <p className="">
+                    <p className="flex">
                       <span className="text-[#32c770] font-semibold">
-                        Comment:{" "}
+                        Rating:{" "}
                       </span>
                       <Rating
                         style={{ maxWidth: 100 }}
@@ -138,6 +138,20 @@ const Profile = () => {
                         readOnly
                       />
                     </p>
+                    {comment?.checked && (
+                      <p className="">
+                        <span className="text-[#32c770] font-semibold">
+                          Save Your name and email :
+                        </span>{" "}
+                        <span className="font-semibold">YES</span>
+                      </p>
+                    )}
+                    { !comment?.checked && <p className="">
+                      <span className="text-[#32c770] font-semibold">
+                        Save Your name and email :
+                      </span>{" "}
+                      <span className="font-semibold">NO</span>
+                    </p>}
                     <div className="card-actions justify-end">
                       <button
                         onClick={() => handleDeleteComment(comment?._id)}

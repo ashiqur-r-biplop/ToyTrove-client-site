@@ -47,12 +47,30 @@ const Category = () => {
         confirmButtonText: "Go to Login! ",
       }).then((result) => {
         if (result.isConfirmed) {
-          // console.log(result.isConfirmed);
           navigate(`/details/${id}`);
         }
       });
     } else {
-      navigate(`/details/${id}`);
+      Swal.fire({
+        title: "Do you really want to read this page?",
+        text: "Confirm now !!!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#32c770",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            position: "top-center",
+            icon: "success",
+            title: "Your Confirmation is Successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate(`/details/${id}`);
+        }
+      });
     }
   };
 
@@ -95,8 +113,14 @@ const Category = () => {
                       <p className="text-start">Price : ${data?.price}</p>
                       <div className="flex items-center ">
                         <span className="">Ratings: </span>
-                        
-                        <Rating style={{ maxWidth: 100 }} className="ms-2" value={data?.rating} itemStyles={myStyles} readOnly />
+
+                        <Rating
+                          style={{ maxWidth: 100 }}
+                          className="ms-2"
+                          value={data?.rating}
+                          itemStyles={myStyles}
+                          readOnly
+                        />
                       </div>
                       <div className="card-actions">
                         <button

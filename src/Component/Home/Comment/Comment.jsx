@@ -4,10 +4,12 @@ import "./Comment.css";
 import { FaCommentAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../../AuthProvide/AuthProvider";
+import { useNavigate } from "react-router-dom";
 
 const Comment = () => {
   const [rating, setRating] = useState(0);
   const [check, setCheck] = useState(false);
+  const navigate = useNavigate()
   const { user } = useContext(AuthContext);
   const ratingChanged = (newRating) => {
     setRating(newRating);
@@ -28,26 +30,43 @@ const Comment = () => {
     const ratings = rating;
     const ourComment = { name, email, comments: comment, ratings, checked };
 
-    fetch("https://toy-trove-server-site.vercel.app/comment", {
-      method: "POST",
-      headers: {
-        "content-type": "application/json",
-      },
-      body: JSON.stringify(ourComment),
-    })
-      .then((res) => res.json())
-      .then((result) => {
-        if (result?.insertedId) {
-          Swal.fire({
-            position: "top-center",
-            icon: "success",
-            title: "Comment Successful",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-          form.reset()
+    if (user) {
+      fetch("https://toy-trove-server-site.vercel.app/comment", {
+        method: "POST",
+        headers: {
+          "content-type": "application/json",
+        },
+        body: JSON.stringify(ourComment),
+      })
+        .then((res) => res.json())
+        .then((result) => {
+          if (result?.insertedId) {
+            Swal.fire({
+              position: "top-center",
+              icon: "success",
+              title: "Comment Successful",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            form.reset();
+          }
+        });
+    }
+    else{
+      Swal.fire({
+        title: "Are you sure You want to comment this post ?",
+        text: "Please Login !!!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#32c770",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Log in",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          navigate('/login')
         }
       });
+    }
   };
   return (
     <div className="container mx-auto my-10">
@@ -55,7 +74,9 @@ const Comment = () => {
         Our <span className="text-[#32c770]">Comments</span>
       </h1>
       <div className="m-3">
-        <h1 className="uppercase md:text-3xl text-xl  font-bold">Leave a Reply</h1>
+        <h1 className="uppercase md:text-3xl text-xl  font-bold">
+          Leave a Reply
+        </h1>
         <p className="text-xl my-1">
           You email address will no be publish. Required fields are marked.
         </p>
@@ -96,16 +117,28 @@ const Comment = () => {
               placeholder="Your Name"
               required
             />
-            <input
-              style={{ borderRadius: "5px" }}
-              defaultValue={user?.email}
-              className="w-full md:w-3/4"
-              name="email"
-              type="Email"
-              disabled
-              placeholder="Your Email"
-              required
-            />
+            {user ? (
+              <input
+                style={{ borderRadius: "5px" }}
+                defaultValue={user?.email}
+                className="w-full md:w-3/4"
+                name="email"
+                type="Email"
+                disabled
+                placeholder="Your Email"
+                required
+              />
+            ) : (
+              <input
+                style={{ borderRadius: "5px" }}
+                defaultValue={user?.email}
+                className="w-full md:w-3/4"
+                name="email"
+                type="Email"
+                placeholder="Your Email"
+                required
+              />
+            )}
           </div>
           <div className="flex justify-start items-start my-3">
             <div>

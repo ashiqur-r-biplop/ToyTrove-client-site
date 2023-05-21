@@ -70,8 +70,15 @@ const Update = () => {
               .then((res) => res.json())
               .then((result) => {
                 if (result?.modifiedCount) {
-                  form.reset();
+                  Swal.fire({
+                    position: "top-center",
+                    icon: "success",
+                    title: "Your Update Toy is Successfully",
+                    showConfirmButton: false,
+                    timer: 1500,
+                  });
                   navigate("/myToys");
+                  form.reset();
                 }
               });
           } else {
