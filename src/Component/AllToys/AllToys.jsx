@@ -106,7 +106,7 @@ const AllToys = () => {
                   <th className="px-6 py-3 text-left text-xs font-medium text-[#32c770] uppercase tracking-wider">
                     Available Quantity
                   </th>
-                  <th className="px-6 py-3"></th>
+                  <th className="px-6 py-3 text-left text-xs font-medium text-[#32c770] uppercase tracking-wider">Details</th>
                 </tr>
               </thead>
               <tbody className="bg-white divide-y divide-gray-200">
@@ -128,7 +128,7 @@ const AllToys = () => {
                     <td className="px-16 py-4 whitespace-nowrap ">
                       {toy.quantity}
                     </td>
-                    <td className="px-6 py-4 whitespace-nowrap">
+                    <td className="px-10 py-4 whitespace-nowrap">
                       <button onClick={() => handleViewDetails(toy?._id)}>
                         <FontAwesomeIcon
                           icon={faArrowUpRightFromSquare}
